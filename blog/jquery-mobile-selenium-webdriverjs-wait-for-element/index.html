@@ -1,0 +1,301 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<script data-cfasync="false" type="text/javascript" src="//use.typekit.net/axj3cfp.js"></script>
+	<script data-cfasync="false" type="text/javascript">try{Typekit.load();}catch(e){}</script>
+	<meta charset="utf-8">
+	<title>Waiting For Element with jQuery Mobile & WebDriverJS  | Kyle Thielk</title>
+
+<meta name="author" content="Kyle Thielk"> 
+
+<meta name="description" content="Selenium&rsquo;s webdriver API provides a convenient way to wait until an element is visible and ready, a common thing to do when testing AJAXy web &hellip;"> <meta name="keywords" content="">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="Kyle Thielk" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="/stylesheets/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script type="text/javascript" src="/javascripts/jquery.fancybox.pack.js"></script>
+
+<script language="Javascript" type="text/javascript">
+$(document).ready(
+  function() {
+    (function($) {
+      $(".fancybox[data-content-id]").each(function() {
+        this.href = $(this).data('content-id');
+      });
+      $(".fancybox").fancybox({
+        beforeLoad: function() {
+          var el, 
+              id = $(this.element).data('title-id');
+
+          if (id) {
+            el = $('#' + id);
+
+            if (el.length) {
+              this.title = el.html();
+            }
+          }
+          if ($(this).data('content')) {
+            this.content = $(this).data('content');
+          }
+        },
+        helpers: {
+          title: {
+            type: 'inside'
+          }
+        }
+      });
+    })(jQuery);
+  }
+);
+</script>
+
+	
+</head>
+
+
+
+<body>
+	<header id="header" class="inner"><div class="wrap">
+	<a class="site-logo" href="http://www.kylethielk.com/blog/" title="Kyle Thielk" rel="home">
+	                <img src="http://gravatar.com/avatar/89c3806c84626af0b8a57f9b1f6358c6/?s=120&amp;d=retro" width="120" height="120" alt="" class="no-grav header-image">
+	            </a>
+	<h1><a href="/">Kyle Thielk</a></h1>
+	<h4>Personal Blog</h4>
+</div>
+<nav id="main-nav" style="display:none"><ul>
+	<li><a href="/">Blog</a></li>
+	<li><a href="/about">About</a></li>
+	<li><a href="/portfolio">Portfolio</a></li>
+	<li><a href="/archives">Archive</a></li>
+</ul>
+</nav>
+<nav id="mobile-nav" style="display:none">
+	<div class="alignleft menu">
+		<a class="button">Menu</a>
+		<div class="container"><ul>
+	<li><a href="/">Blog</a></li>
+	<li><a href="/about">About</a></li>
+	<li><a href="/portfolio">Portfolio</a></li>
+	<li><a href="/archives">Archive</a></li>
+</ul>
+</div>
+	</div>
+	<div class="alignright search">
+		<a class="button"></a>
+		<div class="container">
+			<form action="https://www.google.com/search" method="get">
+				<input type="text" name="q" results="0">
+				<input type="hidden" name="q" value="site:kylethielk.github.io">
+			</form>
+		</div>
+	</div>
+</nav>
+
+
+</header>
+
+	<div id="content" class="inner"><article class="post">
+	<h2 class="title">Waiting for Element With jQuery Mobile & WebDriverJS</h2>
+	<div class="entry-content"><p>Selenium&rsquo;s webdriver API provides a convenient way to wait until an element is visible and ready, a common thing to do when testing AJAXy web apps.</p>
+
+<p>In Java:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">By</span> <span class="n">byId</span><span class="o">=</span> <span class="n">By</span><span class="o">.</span><span class="na">id</span><span class="o">(</span><span class="s">&quot;idOfElementWaitingFor&quot;</span><span class="o">);</span>
+</span><span class='line'><span class="n">wait</span><span class="o">.</span><span class="na">until</span><span class="o">(</span> <span class="n">ExpectedConditions</span><span class="o">.</span><span class="na">visibilityOfElementLocated</span><span class="o">(</span><span class="n">byId</span><span class="o">)</span> <span class="o">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><a href="https://code.google.com/p/selenium/wiki/WebDriverJs">WebDriverJS </a> is a fantastic library of JavaScript bindings for Selenium&rsquo;s webserver that allows us to write our automated tests in javascript. It just makes sense (and feels correct) to write automated tests in javascript when your webapp is entirely javascript as well.</p>
+
+<p>Unfortunately I encountered an issue almost immediately waiting for an element to visible and available when using jQuery Mobile, and surprisingly could find little help in the usual places (read: google).  This is how I solved it.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">waitFor</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">elementId</span><span class="p">,</span> <span class="nx">timeout</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="nx">timeout</span> <span class="o">=</span> <span class="nx">timeout</span> <span class="o">||</span> <span class="mi">5000</span><span class="p">;</span>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">_this</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">deferred</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">webDriver</span><span class="p">.</span><span class="nx">promise</span><span class="p">.</span><span class="nx">defer</span><span class="p">();</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">this</span><span class="p">.</span><span class="nx">driver</span>
+</span><span class='line'>      <span class="p">.</span><span class="nx">wait</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span>
+</span><span class='line'>      <span class="p">{</span>
+</span><span class='line'>          <span class="k">return</span> <span class="nx">_this</span><span class="p">.</span><span class="nx">driver</span><span class="p">.</span><span class="nx">isElementPresent</span><span class="p">(</span><span class="nx">_this</span><span class="p">.</span><span class="nx">webDriver</span><span class="p">.</span><span class="nx">By</span><span class="p">.</span><span class="nx">id</span><span class="p">(</span><span class="nx">elementId</span><span class="p">));</span>
+</span><span class='line'>      <span class="p">},</span> <span class="nx">timeout</span><span class="p">)</span>
+</span><span class='line'>      <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span>
+</span><span class='line'>      <span class="p">{</span>
+</span><span class='line'>          <span class="k">return</span> <span class="nx">_this</span><span class="p">.</span><span class="nx">driver</span><span class="p">.</span><span class="nx">wait</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span>
+</span><span class='line'>          <span class="p">{</span>
+</span><span class='line'>              <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">driver</span>
+</span><span class='line'>                                <span class="p">.</span><span class="nx">findElement</span><span class="p">(</span><span class="nx">_this</span><span class="p">.</span><span class="nx">webDriver</span><span class="p">.</span><span class="nx">By</span><span class="p">.</span><span class="nx">id</span><span class="p">(</span><span class="nx">elementId</span><span class="p">))</span>
+</span><span class='line'>                                <span class="p">.</span><span class="nx">isDisplayed</span><span class="p">();</span>
+</span><span class='line'>          <span class="p">},</span> <span class="nx">timeout</span><span class="p">);</span>
+</span><span class='line'>      <span class="p">})</span>
+</span><span class='line'>      <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">deferred</span><span class="p">.</span><span class="nx">fulfill</span><span class="p">);</span>
+</span><span class='line'>  <span class="k">return</span> <span class="nx">deferred</span><span class="p">.</span><span class="nx">promise</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>There are three tricks here.</p>
+
+<ol>
+<li>WebDriverJS is 100% non-blocking, we thus have to use the provided Promises construct, adding just a little bit of complexity.</li>
+<li>jQuery Mobile, particularly in regards to paging, heavily utilizes hiding/showing elements so we have to ensure that the element exists AND that it is visible.</li>
+<li>WebDriverJS&#8217; findElement() method will throw an error that is not suppressible. So we have to be careful using it when we fully expect an element not exist for a while.</li>
+</ol>
+
+
+<p>This method helps us solve all three. It first waits for the element to exist in the DOM, it then waits for the element to be visible and then it fulfills our promise. For example Selenium correctly complains when we try to click an element that exists, but is not visible.</p>
+
+<p>For further clarification here is a sample usage:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">waitFor</span><span class="p">(</span><span class="s1">&#39;my-action-btn&#39;</span><span class="p">,</span> <span class="mi">10000</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="c1">//...perform action on my-action-btn   </span>
+</span><span class='line'>    <span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Just a note if the element never becomes available and visible, the error thrown by WebDriverJs&#8217; wait method will be propagated through.</p>
+</div>
+
+
+<div class="meta">
+	<span class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-06-16T21:42:28-05:00" pubdate data-updated="true">Jun 16<span>th</span>, 2013</time></span>
+	
+
+<span class="tags">
+
+	<a class='category' href='/blog/categories/general/'>General</a>
+
+</span>
+
+
+	
+</div></article>
+
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	
+	
+<!---	<a class="addthis_counter addthis_pill_style"></a> --->
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+
+
+<section id="comment">
+    <h2 class="title">Comments</h2>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</section>
+</div>
+	<footer id="footer" class="inner">	<div class="social-menu">
+	        <a href="http://feeds.feedburner.com/BitOfNothing" target="_blank"><img src="/media/images/rss.png" border="0"></a>
+	        <a href="http://www.twitter.com/kylethielk" target="_blank"><img src="/media/images/twitter.png" border="0"></a>
+	        <a href="https://www.github.com/kylethielk" target="_blank"><img src="/media/images/github.png" border="0"></a>
+	        <a href="http://www.linkedin.com/pub/kyle-thielk/19/213/103" target="_blank"><img src="/media/images/linkedin.png" border="0"></a>
+	        <a href="https://plus.google.com/115173139610601264088" target="_blank"><img src="/media/images/google.png" border="0"></a>
+	    </div>
+Copyright &copy; 2014
+
+    Kyle Thielk
+
+<br>
+Powered by Octopress.
+
+</footer>
+	<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+<script type="text/javascript">
+      var disqus_shortname = 'kylethielk';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://kylethielk.github.io/blog/jquery-mobile-selenium-webdriverjs-wait-for-element/';
+        var disqus_url = 'http://kylethielk.github.io/blog/jquery-mobile-selenium-webdriverjs-wait-for-element/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-36830678-1']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+
+
+
+</body>
+</html>

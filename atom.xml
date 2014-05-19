@@ -1,0 +1,1044 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Kyle Thielk]]></title>
+  <link href="http://kylethielk.github.io/atom.xml" rel="self"/>
+  <link href="http://kylethielk.github.io/"/>
+  <updated>2014-05-19T09:22:51-05:00</updated>
+  <id>http://kylethielk.github.io/</id>
+  <author>
+    <name><![CDATA[Kyle Thielk]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Include native *.so library in APK with Android Studio]]></title>
+    <link href="http://kylethielk.github.io/blog/include-native-so-library-in-apk-with-android-studio/"/>
+    <updated>2014-04-25T11:23:21-05:00</updated>
+    <id>http://kylethielk.github.io/blog/include-native-so-library-in-apk-with-android-studio</id>
+    <content type="html"><![CDATA[<p>Using the Android NDK is well documented throughout the internet <em>if</em> you are still using Eclipse. The process is basically the same with Android Studio until the time comes to build your APK. The APK will build fine, but your library *.so file will be missing from the APK and when you attempt to load it with System.loadLibrary(&ldquo;mylibrary&rdquo;) you will get:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">java</span><span class="o">.</span><span class="na">lang</span><span class="o">.</span><span class="na">UnsatisfiedLinkError</span><span class="o">:</span> <span class="n">Couldn</span><span class="err">&#39;</span><span class="n">t</span> <span class="n">load</span> <span class="n">mylibrary</span> <span class="n">from</span> <span class="n">loader</span> <span class="n">dalvik</span><span class="o">.</span><span class="na">system</span><span class="o">.</span><span class="na">PathClassLoader</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>You can view the contents of your APK with the following command to verify libmylibrary.so is not in the APK:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>unzip -l MyApp.apk
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Android Studio&rsquo;s build tool will not look in the usual place:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>SharedLibrary  : libmylibrary.so
+</span><span class='line'>Install        : libmylibrary.so <span class="o">=</span>&gt; libs/armeabi/libmylibrary.so
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The trick (thanks to this thread: <a href="https://groups.google.com/forum/#!msg/adt-dev/nQobKd2Gl_8/Z5yWAvCh4h4J">https://groups.google.com/forum/#!msg/adt-dev/nQobKd2Gl_8/Z5yWAvCh4h4J</a>) is to move libmylibrary.so to:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>src/main/jniLibs/armeabi/libmylibrary.so
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Voila, your native code is now compiled into your APK. This should work with build tools 0.8+</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[VMWare Fusion 5: Could not open /dev/vmmon: No such file or directory.]]></title>
+    <link href="http://kylethielk.github.io/blog/vmware-fusion-5-could-not-open-devvmmon-no-such-file-or-directory/"/>
+    <updated>2014-04-08T07:53:52-05:00</updated>
+    <id>http://kylethielk.github.io/blog/vmware-fusion-5-could-not-open-devvmmon-no-such-file-or-directory</id>
+    <content type="html"><![CDATA[<p>I ran into this issue recently with VMWare Fusion 5. All of the sudden none of my virtual machines would start. They would all error out with &ldquo;Could not open /dev/vmmon: No such file or directory.&rdquo;</p>
+
+<p>After much head banging I remembered that I had recently installed Intel HAXM. Taking a stab in the dark I uninstalled HAXM:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>sudo /System/Library/Extensions/intelhaxm.kext/Contents/Resources/uninstall.sh
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Voila! All of my VM&rsquo;s happily start. My emulators run extremely slow, but at least I can run virtual machines. Will update if I figure out how to get them running in parallel.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Lending Club Strategy]]></title>
+    <link href="http://kylethielk.github.io/blog/lending-club-strategy/"/>
+    <updated>2014-04-04T16:05:22-05:00</updated>
+    <id>http://kylethielk.github.io/blog/lending-club-strategy</id>
+    <content type="html"><![CDATA[<p><img src="http://kylethielk.github.io/media/images/lending-club-screenshot.png" title="Lending Club Screenshot" alt="Lending Club Screenshot" /></p>
+
+<p>I was rather late to hop on the Lending Club bandwagon. I live in a state where it is not legal invest on the Lending Club platform. I can however invest on the secondary market.</p>
+
+<p>Admittedly it took me awhile to warm up to the idea of investing on the secondary market. The platform used to <em>SUCK</em> both aesthetically and from a loan filtering standpoint. When there are currently over 100,000 loans to sort through, you need good filtering capabilities. Fortunately both issues have now largely been fixed and its actually quite easy to use.</p>
+
+<p>Its true that you will more than likely pay a markup on any loan purchased through the secondary market. This markup is completely worth the cost as you get to benefit from seeing the lendee&rsquo;s payment history. I personally think this is a much better indicator of likelihood of defaulting than any other. It certainly gives me more confidence when investing in low quality (but higher paying) loans.</p>
+
+<p>These are the two sets of filter criteria I use(one a slight modification of the other):</p>
+
+<p><strong>For 36 Month Loan Term:</strong></p>
+
+<p>Interest Rate: All
+Loan Term: 36 Months
+Outstanding Principal: 0 &ndash; Any
+Loan Status: Issued,Current, Never Late *
+Remaining Payments: 28
+Recent Credit Score: All
+Credit Score Change: Up or Same
+Original Note Amount: 25 &ndash; Any
+Asking Price: 0 &ndash; 100
+Yield to Maturity: 13 &ndash; Any
+Markup/Discount: No more than 1% markup
+Exclude Loans I have already invested in: Yes</p>
+
+<p><strong>For 60 Month Loan Term:</strong></p>
+
+<p>Interest Rate: All
+Loan Term: 60 Months
+Outstanding Principal: 0 &ndash; Any
+Loan Status: Issued,Current, Never Late *
+Remaining Payments: 50
+Recent Credit Score: All
+Credit Score Change: Up or Same
+Original Note Amount: 25 &ndash; Any
+Asking Price: 0 &ndash; 100
+Yield to Maturity: 15 &ndash; Any
+Markup/Discount: No more than 1% markup
+Exclude Loans I have already invested in: Yes</p>
+
+<p><em>* One filtering criteria not available but that I still do manually is: &ldquo;Never been in grace period before.&rdquo; I  immediately reject any that have ever been in grade period. This adds some grunt work, but is important.</em></p>
+
+<p>Notice I demand a slightly higher rate of return for 60 month loans. Its my opinion that 36 month loans are less likely to default simply because there is less time for something financially devastating to happen in.</p>
+
+<p>I also cap the asking price at $100. It is important to spread your risk out over as many loans as possible. I am currently spread out over 767 loans with only 7 in grace period or worse.</p>
+
+<p>This criteria is pretty strict. There are times when no loans will be available. You can often &lsquo;unlock&rsquo; some more by bumping the maximum markup to 2%, but I prefer to wait.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Build iOS App with Jenkins: Code Signing Issues.]]></title>
+    <link href="http://kylethielk.github.io/blog/build-ios-app-with-jenkins-code-signing-issues/"/>
+    <updated>2014-03-21T08:14:14-05:00</updated>
+    <id>http://kylethielk.github.io/blog/build-ios-app-with-jenkins-code-signing-issues</id>
+    <content type="html"><![CDATA[<p>Building an iOS application in xCode is easy. It automatically handles all of your certificates and provisioning profiles. Sure it can be finicky at times, but for the most part it just works.</p>
+
+<p>Automatically building your application (i.e with Jenkins) is not so easy. You have to ensure that your private key, certificate and provisioning profile are configured and available. Recently I found out that this is easier said than done.</p>
+
+<p><strong>Ensure your provisioning profile is available</strong></p>
+
+<p>This one is easy. Simply download your provisioning profile from the Developer Center to the build machine and double click it (make sure you are logged in as the user that will be used for your automated builds). xCode will automatically add it to your list of available provisioning profiles. You can see a list of all of your provisioning profiles by browsing to:</p>
+
+<p><em>~/Library/MobileDevice/Provisioning\ Profiles/</em></p>
+
+<p><strong>Add your Certificate and Private Key</strong></p>
+
+<p>This is the tricky part. On your development machine you are more than likely running as an administrator (whereas on your build machine the &lsquo;build user&rsquo; should not be). Simply adding your certificate and key file to the System/Login Keychain and just expecting them to work&hellip;.well it won&rsquo;t work. The solution is to create a new keychain, add your certificate/key here and tell your build to use this new keychain. <em>Note: the creation of a new keychain is not 100% necessary, but I prefer it. Once you start building multiple projects on one machine it helps keep things organized.</em></p>
+
+<p>The following is the pseudo code of what I use. First create new keychain:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c">#Create keychain</span>
+</span><span class='line'>security create-keychain -p &lt;i&gt;YourPassword&lt;/i&gt; NewKeychain.keychain
+</span><span class='line'>
+</span><span class='line'><span class="c">#Import Cert/Key - The -A flag is what allows non-interactive use of cert</span>
+</span><span class='line'>security import /path/to/my.cert -t cert -k NewKeychain.keychain -A
+</span><span class='line'>security import /path/to/private.p12 -t agg -k NewKeychain.keychain -A
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The build script can then be adjusted as so:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c">#Load keychain, and unlock it</span>
+</span><span class='line'>security list-keychain -s <span class="s2">&quot;/var/lib/jenkins/Library/Keychains/NewKeychain.keychain&quot;</span>
+</span><span class='line'>security default-keychain -s <span class="s2">&quot;/var/lib/jenkins/Library/Keychains/NewKeychain.keychain&quot;</span>
+</span><span class='line'>security unlock-keychain -p <span class="s2">&quot;YourPassword&quot;</span> <span class="s2">&quot;/var/lib/jenkins/Library/Keychains/NewKeychain.keychain&quot;</span>
+</span><span class='line'>
+</span><span class='line'>&lt;Run Build&gt;
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="c">#Reset to login keychain</span>
+</span><span class='line'>security list-keychain -s <span class="s2">&quot;/var/lib/jenkins/Library/Keychains/login.keychain&quot;</span>
+</span><span class='line'>security default-keychain -s <span class="s2">&quot;/var/lib/jenkins/Library/Keychains/login.keychain&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Android Studio Unit Testing Setup]]></title>
+    <link href="http://kylethielk.github.io/blog/android-studio-unit-testing-setup/"/>
+    <updated>2014-03-18T11:38:37-05:00</updated>
+    <id>http://kylethielk.github.io/blog/android-studio-unit-testing-setup</id>
+    <content type="html"><![CDATA[<p>I am surprised that there is not official documentation to get a simple &ldquo;Hello, world!&rdquo;-esque unit test setup running in Android Studio.</p>
+
+<p>Fortunately I stumbled on this dead simple guide for running your first unit test in Android Studio: <a href="http://nikolaj.hesselholtskov.dk/2013/10/how-to-add-unit-tests-to-android-studio.html">http://nikolaj.hesselholtskov.dk/2013/10/how-to-add-unit-tests-to-android-studio.html</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Objective-C: Instantiate Child Class from Parent]]></title>
+    <link href="http://kylethielk.github.io/blog/objective-c-instantiate-child-class-from-parent/"/>
+    <updated>2014-02-07T12:27:11-06:00</updated>
+    <id>http://kylethielk.github.io/blog/objective-c-instantiate-child-class-from-parent</id>
+    <content type="html"><![CDATA[<p>A common problem encountered (in any language) is how to instantiate a child class from an instance of a base parent in a generic way.  In Objective-C take for example:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='obj-c'><span class='line'><span class="k">@interface</span> <span class="nc">Vehicle</span> : <span class="nc">NSObject</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">@property</span> <span class="p">(</span><span class="n">copy</span><span class="p">,</span><span class="n">nonatomic</span><span class="p">)</span> <span class="n">NSString</span> <span class="o">*</span><span class="n">name</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">@end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">@interface</span> <span class="nc">Motorcycle</span> : <span class="nc">Vehicle</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">@property</span> <span class="p">(</span><span class="n">copy</span><span class="p">,</span><span class="n">nonatomic</span><span class="p">)</span> <span class="n">NSNumber</span> <span class="o">*</span><span class="n">engineCC</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">@end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>If we have an instance of Vehicle and we want to get an instance of a Motorcycle we could manually copy each property:</p>
+
+<p><strong>Manual Property Copy</strong></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='obj-c'><span class='line'><span class="n">Vehicle</span> <span class="o">*</span><span class="n">vehicle</span> <span class="o">=</span> <span class="p">[</span><span class="n">Vehicle</span> <span class="n">new</span><span class="p">];</span>
+</span><span class='line'><span class="n">vehicle</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="s">@&quot;MyVehicle&quot;</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">Motorcycle</span> <span class="o">*</span><span class="n">motorcycle</span> <span class="o">=</span> <span class="p">[</span><span class="n">Motorcycle</span> <span class="n">new</span><span class="p">];</span>
+</span><span class='line'><span class="n">motorcycle</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">vehicle</span><span class="p">.</span><span class="n">name</span><span class="p">;</span>
+</span><span class='line'><span class="n">motorcycle</span><span class="p">.</span><span class="n">engineCC</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSNumber</span> <span class="nl">numberWithInt:</span><span class="mi">200</span><span class="p">];</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Seems simple enough in this case, but when the property count starts increasing so does the amount of typing. If only there were a better way&hellip;:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+</pre></td><td class='code'><pre><code class='obj-c'><span class='line'><span class="k">+</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="nf">copyParent:</span><span class="p">(</span><span class="kt">id</span><span class="p">)</span><span class="nv">parent</span> <span class="nf">intoChild:</span><span class="p">(</span><span class="kt">id</span><span class="p">)</span> <span class="n">child</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="kt">id</span> <span class="n">parentClass</span> <span class="o">=</span> <span class="p">[</span><span class="n">parent</span> <span class="n">class</span><span class="p">];</span>
+</span><span class='line'>    <span class="n">NSString</span> <span class="o">*</span><span class="n">propertyName</span><span class="p">;</span>
+</span><span class='line'>    <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">outCount</span><span class="p">,</span> <span class="n">i</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">//Get a list of properties for the parent class.</span>
+</span><span class='line'>    <span class="n">objc_property_t</span> <span class="o">*</span><span class="n">properties</span> <span class="o">=</span> <span class="n">class_copyPropertyList</span><span class="p">(</span><span class="n">parentClass</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">outCount</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">//Loop through the parents properties.</span>
+</span><span class='line'>    <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">outCount</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="n">objc_property_t</span> <span class="n">property</span> <span class="o">=</span> <span class="n">properties</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="c1">//Convert the property to a string.</span>
+</span><span class='line'>        <span class="n">propertyName</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSString</span> <span class="nl">stringWithCString:</span><span class="n">property_getName</span><span class="p">(</span><span class="n">property</span><span class="p">)</span> <span class="nl">encoding:</span><span class="n">NSASCIIStringEncoding</span><span class="p">];</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="c1">//Get the parent&#39;s value for the property</span>
+</span><span class='line'>        <span class="kt">id</span> <span class="n">value</span> <span class="o">=</span> <span class="p">[</span><span class="n">parent</span> <span class="nl">valueForKey:</span><span class="n">propertyName</span><span class="p">];</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="c1">//..and copy into the child.</span>
+</span><span class='line'>        <span class="k">if</span> <span class="p">([</span><span class="n">value</span> <span class="nl">conformsToProtocol:</span><span class="err">@</span><span class="n">protocol</span><span class="p">(</span><span class="n">NSCopying</span><span class="p">)])</span>
+</span><span class='line'>        <span class="p">{</span>
+</span><span class='line'>            <span class="p">[</span><span class="n">child</span> <span class="nl">setValue:</span><span class="p">[</span><span class="n">value</span> <span class="n">copy</span><span class="p">]</span> <span class="nl">forKey:</span><span class="n">propertyName</span><span class="p">];</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>        <span class="k">else</span>
+</span><span class='line'>        <span class="p">{</span>
+</span><span class='line'>            <span class="p">[</span><span class="n">child</span> <span class="nl">setValue:</span><span class="n">value</span> <span class="nl">forKey:</span><span class="n">propertyName</span><span class="p">];</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><em>Note: Make sure to import objc/runtime.h:</em></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='obj-c'><span class='line'><span class="cp">#import &lt;objc/runtime.h&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Sample Usage (assuming we put the method in a class called Utils):</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='obj-c'><span class='line'><span class="n">Vehicle</span> <span class="o">*</span><span class="n">vehicle</span> <span class="o">=</span> <span class="p">[</span><span class="n">Vehicle</span> <span class="n">new</span><span class="p">];</span>
+</span><span class='line'><span class="n">vehicle</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="s">@&quot;MyVehicle&quot;</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">Motorcycle</span> <span class="o">*</span><span class="n">motorcycle</span> <span class="o">=</span> <span class="p">[</span><span class="n">Motorcycle</span> <span class="n">new</span><span class="p">];</span>
+</span><span class='line'><span class="p">[</span><span class="n">Utils</span> <span class="nl">copyParent:</span><span class="n">vehicle</span> <span class="nl">intoChild:</span><span class="n">motorcycle</span><span class="p">];</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Quicken: How to not do Customer Support]]></title>
+    <link href="http://kylethielk.github.io/blog/quicken-how-to-not-do-customer-support/"/>
+    <updated>2014-01-17T09:42:47-06:00</updated>
+    <id>http://kylethielk.github.io/blog/quicken-how-to-not-do-customer-support</id>
+    <content type="html"><![CDATA[<p>My &ldquo;Express Web Connect&rdquo; to Wells Fargo with Quicken 2014 just stopped working one day. Quicken displayed a generic &ldquo;Error CC-502&rdquo; and simply suggested trying again in a few days. Three weeks pass with the same result. I decide to contact Quicken Support via Online Chat.</p>
+
+<p>The final outcome.</p>
+
+<blockquote><p>Dear Kyle Thielk,</p>
+
+<p>I apologize, but due to technical limitations on how our connection works with Wells Fargo we will be unable resolve your connection problem. Your options at this time are to download your Wells Fargo accounts through Web Connect or contact Wells Fargo to see if Direct Connect is available option.</p>
+
+<p>For Further clarification, you can contact your bank. Again we apologize for the inconvenience this will cause.</p></blockquote>
+
+<p>Sincerely,
+Quicken Customer Care</p>
+
+<p>Comforting. Very comforting.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Pointers in Objective-C]]></title>
+    <link href="http://kylethielk.github.io/blog/pointers-in-objective-c/"/>
+    <updated>2013-12-14T08:08:40-06:00</updated>
+    <id>http://kylethielk.github.io/blog/pointers-in-objective-c</id>
+    <content type="html"><![CDATA[<p>Objective-C is a strict superset of C. That means every feature of C is alive and kicking in Objective-C, pointers included. Five years of pointer free programming has made me&hellip;rusty. As the saying goes, &ldquo;There is no better way to learn than to teach&rdquo;.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='objective-c'><span class='line'><span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">//Your standard variable</span>
+</span><span class='line'><span class="kt">int</span> <span class="o">*</span><span class="n">b</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">a</span><span class="p">;</span> <span class="c1">//An integer pointer</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">//Prints &quot;The value of a is 2&quot;</span>
+</span><span class='line'><span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;The value of a is %i.&quot;</span><span class="p">,</span><span class="n">a</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">*</span><span class="n">b</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">//Prints &quot;The value of a is 3&quot;</span>
+</span><span class='line'><span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;The value of a is %i&quot;</span><span class="p">,</span><span class="n">a</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This is your standard pointer example. <em>int *b</em> is an integer pointer that we are assigning the address of <em>int a</em>. The asterisk <em>*</em> is generally called the <em>dereferencing</em> or <em>indirection</em> operator and means &ldquo;Give me the value stored at the address this pointer points to&rdquo;. The <em>&amp;</em> operator means &ldquo;Give me the address in memory that this variable is stored at&rdquo;.</p>
+
+<p>What can often be confusing is that with one line declaration and initialization short-hand, the asterisk is not performing any dereferencing but is actually simply declaring that this is an integer pointer.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='objective-c'><span class='line'><span class="kt">int</span> <span class="o">*</span><span class="n">b</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">a</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">//..is the same as </span>
+</span><span class='line'>
+</span><span class='line'><span class="kt">int</span> <span class="o">*</span><span class="n">b</span><span class="p">;</span>
+</span><span class='line'><span class="n">b</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">a</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This snippet of code illustrates how this actually works in memory.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='objective-c'><span class='line'><span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+</span><span class='line'><span class="kt">int</span> <span class="o">*</span><span class="n">b</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">a</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;%p -&gt; %i&quot;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">a</span><span class="p">,</span> <span class="n">a</span><span class="p">);</span>
+</span><span class='line'><span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;%p -&gt; %p&quot;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">b</span><span class="p">,</span> <span class="n">b</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The output:</p>
+
+<pre><code>&lt;em&gt;0x7fff5fbff88c -&gt; 2
+0x7fff5fbff880 -&gt; 0x7fff5fbff88c&lt;/em&gt;
+</code></pre>
+
+<p>left number: the variables location in memory.
+right number: the value it stores.</p>
+
+<p>Remember a pointer is like any other variable, it has its own location in memory but its value is simply another memory address. So when you write &ldquo;*b&rdquo; you are saying &ldquo;Give me the value (2) stored at the address (0x7fff5fbff88c).</p>
+
+<h2>Pointers to Pointers</h2>
+
+<p>With pointers to pointers things get a little more complicated. A pointer can actually point to another pointer. Take the following code.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='objective-c'><span class='line'><span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+</span><span class='line'><span class="kt">int</span> <span class="o">*</span><span class="n">b</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">a</span><span class="p">;</span>
+</span><span class='line'><span class="kt">int</span> <span class="o">**</span><span class="n">c</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">b</span><span class="p">;</span> <span class="c1">//A pointer to a pointer</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;%p -&gt; %i&quot;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">a</span><span class="p">,</span> <span class="n">a</span><span class="p">);</span>
+</span><span class='line'><span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;%p -&gt; %p&quot;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">b</span><span class="p">,</span> <span class="n">b</span><span class="p">);</span>
+</span><span class='line'><span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;%p -&gt; %p&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">c</span><span class="p">,</span> <span class="n">c</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The output:</p>
+
+<pre><code>&lt;em&gt;0x7fff5fbff88c -&gt; 2
+0x7fff5fbff880 -&gt; 0x7fff5fbff88c
+0x7fff5fbff878 -&gt; 0x7fff5fbff880&lt;/em&gt;
+</code></pre>
+
+<p><em>int **c</em> points to <em>int *b</em> which in turn points to <em>int a</em>. To further illustrate the following examples show how we can reference the same thing in multiple ways.</p>
+
+<p>a == <em>b == **c; //The value 2
+&a; == b == </em>c; //The address of a or 0x7fff5fbff88c</p>
+
+<p>Pointers to pointers have practical uses in Objective-C when a method actually needs to return multiple values.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='objective-c'><span class='line'><span class="k">-</span> <span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span> <span class="nf">printNumber:</span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="nv">number</span> <span class="nf">error:</span><span class="p">(</span><span class="n">NSError</span> <span class="o">**</span><span class="p">)</span><span class="nv">errorPtr</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">NSError</span> <span class="o">*</span><span class="n">anyError</span><span class="p">;</span>
+</span><span class='line'><span class="p">[</span><span class="n">myClass</span> <span class="nl">printNumber:</span><span class="o">&amp;</span><span class="n">anyError</span><span class="p">]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><em>printNumber</em> in this case can return a BOOL with the standard return statement <strong><em>and</em></strong> an optional error by setting our <em>*anyError</em> pointer to a new NSError object.</p>
+
+<p>For example a sample implementation of printNumber:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='objective-c'><span class='line'><span class="k">-</span> <span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span> <span class="nf">printNumber:</span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="nv">number</span> <span class="nf">error:</span><span class="p">(</span><span class="n">NSError</span> <span class="o">**</span><span class="p">)</span><span class="nv">errorPtr</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="k">if</span><span class="p">(</span><span class="n">number</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="n">NSError</span> <span class="o">*</span><span class="n">newError</span> <span class="o">=</span> <span class="p">[</span><span class="n">MyErrorFactory</span> <span class="nl">newErrorWithDesc:</span><span class="s">@&quot;Negative numbers are not allowed&quot;</span><span class="p">];</span>
+</span><span class='line'>        <span class="o">*</span><span class="n">errorPtr</span> <span class="o">=</span> <span class="n">newError</span><span class="p">;</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">NO</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="k">else</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Your number is %i&quot;</span><span class="p">,</span><span class="n">number</span><span class="p">);</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">YES</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Southeast Asia Travel Tips]]></title>
+    <link href="http://kylethielk.github.io/blog/southeast-asia-travel-tips/"/>
+    <updated>2013-12-13T10:19:46-06:00</updated>
+    <id>http://kylethielk.github.io/blog/southeast-asia-travel-tips</id>
+    <content type="html"><![CDATA[<p>Christina and I left for Southeast Asia on March 6th. We flew back home on November 12th.  At just over eight months of travelling you start picking up on what does and doesn&rsquo;t work.</p>
+
+<h2>Packing</h2>
+
+<ul>
+<li><p>Pack light. No seriously pack very light. Budget airlines in Asia have very strict weight limits for baggage. </p></li>
+<li><p>For men use <a href="http://www.amazon.com/gp/product/B001M0MMYE/ref=oh_details_o01_s01_i00?ie=UTF8&amp;psc=1">underwear like these</a> that are quick drying and can be washed and dried overnight in a hotel room. I survived on 3-4 of them.</p></li>
+<li><p>Favor clothes made from a quick drying material. Cotton takes a long time to dry in a humid climate.</p></li>
+<li><p>Bring a laundry bag to keep your dirty clothes in.</p></li>
+<li><p>Bring gallon sized zip-lock bags. If some of your clothes do get wet, it helps keep the rest of them dry.</p></li>
+<li><p>My backpack was a <a href="http://www.amazon.com/gp/product/B003GC11UC/ref=oh_details_o04_s01_i00?ie=UTF8&amp;psc=1">70L Osprey Bag</a>. It only just fit on an overhead bin. Consider a slightly smaller bag.</p></li>
+<li><p>Laundry can be done on the road fairly inexpensively. On average we paid $1/kg. An average weekly load for the two of us was 3kg. Expect hand washing and hang drying. Dryers are exceedingly rare. Usually took 1-2 days for clothes.</p></li>
+<li><p>I survived on one pair of trekking shoes and one pair of flip-flops.</p></li>
+<li><p><a href="https://www.google.com/search?q=sarong&amp;oq=sarong&amp;aqs=chrome.0.69i59j69i60j0l4.2210j0j4&amp;sourceid=chrome&amp;espv=210&amp;es_sm=93&amp;ie=UTF-8">Sarongs</a> may not be the most manly things but they are invaluable. Mine has acted as a towel, a bed sheet, a scarf, padding for my camera to name a few. You can get them for cheap everywhere in Southeast Asia.</p></li>
+</ul>
+
+
+<h2>Accommodations</h2>
+
+<ul>
+<li><p>You can stay dirt cheap. Especially if you are OK with dorm style.  Even if you are not a private room can be had for $10 or cheaper in most places.</p></li>
+<li><p>You do however get what you pay for. Expect to pay more for each amenity such as hot water and air conditioner.</p></li>
+<li><p>During a particular area&rsquo;s high season finding a budget room can be stressful. Also more expensive.  For example we were in Indonesia during high season and struggled to find anything for less than $20/night on the Gilis.</p></li>
+<li><p>A lot of budget places do not provide top sheets or a blanket, towels, shampoo/soap or toilet paper. Which reminds me, always have a toilet paper roll in your day bag.</p></li>
+<li><p>Many of the best options do not have a web presence. So don&rsquo;t expect to be able to book everything on Agoda.com or booking.com. Sometimes you just have to show up and look at your options in person.</p></li>
+<li><p>In general if we felt uncertain about a place (i.e there is no well known backpacker&rsquo;s area in a big city) we would book the first two nights via Agoda.com and explore other options while there.</p></li>
+<li><p>Squat toilets are common in muslim areas.</p></li>
+<li><p>A tasting of some of our accommodations:</p></li>
+</ul>
+
+
+<p><img src="http://kylethielk.github.io/media/images/gili-bathroom.jpg" title="Gili Indonesia Bathroom" alt="" />
+<img src="http://kylethielk.github.io/media/images/bathroom-labuan-bajo.jpg" title="Labuan Bajo Bathroom" alt="" />
+<img src="http://kylethielk.github.io/media/images/bedroom-gili.jpg" title="Gili  Bedroom" alt="" /></p>
+
+<h2>Travel</h2>
+
+<ul>
+<li><p>Obviously it varies from country to country, but in general it is very easy to get from place to place.</p></li>
+<li><p>Buses are almost always the cheapest option. Buses vary in range from luxurious recliners to &ldquo;oh my god get me off this thing&rdquo;. Safety is not a top priority.</p></li>
+<li><p>In general when booking with a large bus liner prices are non negotiable. When booking with small tourist agencies prices are always negotiable.</p></li>
+<li><p>Budget airlines are WAY cheaper than flights in the USA. Jetstar/ValuAir is to be avoided at all costs. Tiger is hit or miss as is Lion Air.  AirAsia is the by far the best.</p></li>
+<li><p>Philippine Airlines deserves its own bullet point for being the very worst run airline I&rsquo;ve ever been on. Seriously, get your act together guys.</p></li>
+<li><p>Budget airlines will nickel and dime you to death. Sure the base price may be $30, but it costs another $30 to check a bag and $8/person to pay by credit card (no joke).</p></li>
+<li><p>Most of the airlines have a combined weight limit of 7KG for carry on. On all but one flight (darn you Singapore Airport) we got away with bringing our 15KG/person of baggage on. Check in online, be friendly and act like your bags are light as a feather every time you see an employee.</p></li>
+<li><p>We bought almost all of our flights 2-3 days prior. Some we bought the night before. Budget airlines seem to play less pricing games.</p></li>
+</ul>
+
+
+<h2>Money</h2>
+
+<ul>
+<li><p>If you have time, sign up for a <a href="http://www.schwab.com/public/schwab/banking_lending/checking_account">Charles Schwab Online Checking Account</a> for no foreign ATM fees. </p></li>
+<li><p>The best exchange rate is almost always via an ATM machine or via credit card (90% of places will not take credit cards though or will charge an additional 5%, so don&rsquo;t count on it).</p></li>
+<li><p>Unfortunately most smaller merchants won&rsquo;t accept the large bills ATM machines spit out. Find a 7-eleven and buy a bottle of water to break your bills.</p></li>
+<li><p>Some smaller locations (and all of Myanmar) do not  have ATMs so plan accordingly.</p></li>
+<li><p>Being overcharged simply because you are a westerner is common. Try to figure out (by talking to people, hotel staff are a good place to start) how much things should cost.</p></li>
+<li><p>I always carried $100-200 in USD just in case I couldn&rsquo;t get to an ATM or the only one on the entire island breaks (I&rsquo;m looking at you Gili Air).</p></li>
+</ul>
+
+
+<h2>General Advice</h2>
+
+<ul>
+<li><p>Smile. Be friendly. You will have a far more enjoyable time and people will be far more welcoming.</p></li>
+<li><p>Do not lose your temper or show your frustration. There will be many, many times when it is easy to do both. Simply smile and walk away.</p></li>
+<li><p>Very few prices are not negotiable. More often than not the same exact thing can be bought from 10+ vendors. Negotiate and shop around.</p></li>
+<li><p>Be super friendly and joke around with the merchant when negotiating and remember they will tell you anything to get you to fork over you money. Be polite but take everything your told with a grain of salt.</p></li>
+<li><p>Don&rsquo;t buy from children. Doing so only encourages child labor and keeps them from school.</p></li>
+<li><p>Embrace cultural differences rather than becoming irritated by them. It sounds easier than it is.</p></li>
+<li><p>Customer service is non-existent so don&rsquo;t expect much. Tipping is rare.</p></li>
+<li><p> Try to space out your mainland and beach trips. Two months straight on a beach might sound appealing, but I promise you that after 3 weeks you will be begging for big city amenities.</p></li>
+<li><p>Plan minimally. For each new location I briefly browse <a href="http://wikitravel.org/en/Main_Page">www.wikitravel.org</a>. It helps to be aware of the scams of the day, the best transport options and where you are likely to find budget accommodations.</p></li>
+<li><p>Try to get off the beaten path. If you stick to the touristy areas you will miss the best parts of travelling.</p></li>
+<li><p>Be flexible. There are places we planned on staying one day but loved it and stayed 4. There are places we were disappointed with and left early.</p></li>
+<li><p>Get travel health insurance with emergency evacuation coverage. Its cheap and worth every penny (hint: remove trip cancellation coverage and see your policy half in price).</p></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Naturally, Kenya]]></title>
+    <link href="http://kylethielk.github.io/blog/naturally-kenya/"/>
+    <updated>2013-12-08T19:45:46-06:00</updated>
+    <id>http://kylethielk.github.io/blog/naturally-kenya</id>
+    <content type="html"><![CDATA[<p><img src="http://kylethielk.github.io/media/images/kenya-featured.jpg" title="Kenya Tea Field Header" alt="" /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/buffalo-flamingos-nakuru.jpg" title="Buffalo among the flamingos in Nakuru Park." alt="Buffalo among the flamingos in Nakuru Park." /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/cheeky-baboon.jpg" title="Cheeky Baboon stealing from the litter bin." alt="Cheeky Baboon stealing from the litter bin." /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/chicks-at-sunrise.jpg" title="Chicks at sunset." alt="Chicks at sunset." /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/flooded-nakuru-park.jpg" title="Nakuru park becomes more and more flooded each year." alt="Nakuru park becomes more and more flooded each year." /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/flooded-road-nakuru.jpg" title="What once was a road in Nakuru National Park." alt="What once was a road in Nakuru National Park." /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/giraffe-nakuru.jpg" title="Giraffe on the move. Nakuru National Park." alt="Giraffe on the move. Nakuru National Park." /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/just-playing-around.jpg" title="Cyclist in training." alt="Cyclist in training." /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/local-children-kenya.jpg" title="Local children in Lwalla." alt="Local children in Lwalla." /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/lwalla-countryside.jpg" title="Taking in Lwalla's countryside." alt="Taking in Lwalla's countryside." /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/momma-cow-and-baby.jpg" title="There is a ton of livestock." alt="There is a ton of livestock." /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/no-graffiti-hells-gate.jpg" title="Woops. Graffiti in Hell's Gate." alt="Woops. Graffiti in Hell's Gate." /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/fallen-tree-riverbed-hells-.jpg" title="Fallen tree in a dried riverbed, Hell's Gate." alt="Fallen tree in a dried riverbed, Hell's Gate." /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/obama-lollipop.jpg" title="Obama Lollipop. They love him and everyone claims to be related to him." alt="Obama Lollipop. They love him and everyone claims to be related to him." /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/rock-hyrax.jpg" title="A Rock Hyrax in Hell's Gate." alt="A Rock Hyrax in Hell's Gate." /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/warthog-nakuru.jpg" title="Warthog. Nakuru National Park." alt="Warthog. Nakuru National Park." /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/zebra-hells-gate.jpg" title="Zebra in Hell's Gate." alt="Zebra in Hell's Gate." /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/baby-lamb-kenya.jpg" title="A baby lamb and his momma." alt="A baby lamb and his momma." /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/biking-hells-gate.jpg" title="Biking through Hells Gate." alt="Biking through Hells Gate." /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/blood-water.jpg" title="Blood: Water Mission" alt="Blood: Water Mission" /></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Charming, Myanmar]]></title>
+    <link href="http://kylethielk.github.io/blog/charming-myanmar/"/>
+    <updated>2013-12-05T18:11:28-06:00</updated>
+    <id>http://kylethielk.github.io/blog/charming-myanmar</id>
+    <content type="html"><![CDATA[<p><img src="http://kylethielk.github.io/media/images/myanmar-featured1.jpg" title="Myanmar Inle Lake Header" alt="" /></p>
+
+<p>Myanmar. Oppressive Government. Remarkably friendly and welcoming people.</p>
+
+<p>Two weeks before our scheduled arrival Myanmar was struck by 5 separate (minor, but still) bombings. I am so glad we did not cancel (although we almost did, numerous times).</p>
+
+<p>Myanmar truly is largely unaffected by tourism and that is a fantastic thing. Take stunning natural beauty, throw in delicious food, millions of smiling faces genuinely happy to have you and you have one heck of a place to visit. Highly recommended.</p>
+
+<p><img src="http://kylethielk.github.io/media/images/say-hello.jpg" title="Say hello..." alt="Say Hello...." /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/foot-rowing-inle-lake.jpg" title="Fisherman demonstrating the burmese 'row' with one leg." alt="Fisherman demonstrating the burmese 'row' with one leg." /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/traditional-fishing-inle.jpg" title="Scaring the fish into your net." alt="Scaring the fish into your net." /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/inle-lake-house-2.jpg" title="Lakefront property." alt="Lakefront property." /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/inle-lake-house.jpg" title="Floating house in the middle of Inle lake." alt="Floating house in the middle of Inle lake." /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/traditional-fishing-inle-la.jpg" title="The famous traditional fisherman of Inle Lake." alt="The famous traditional fisherman of Inle Lake." /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/waiting-boat-races.jpg" title="Waiting for the boat races." alt="Waiting for the boat races." /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/traditional-boat-races-inle.jpg" title="Traditional boat races." alt="Traditional boat races." /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/temples-inle-lake.jpg" title="Temples on Inle Lake." alt="Temples on Inle Lake." /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/temples-far-as-eye.jpg" title="Temples as far as the eye can see in Bagan." alt="Temples as far as the eye can see in Bagan." /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/temples-bagan.jpg" title="The temples of Bagan." alt="The temples of Bagan." /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/shwedagon-pagoda.jpg" title="Shwedagon Pagoda" alt="Shwedagon Pagoda" /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/moss-pot.jpg" title="It makes for a great picture." alt="It makes for a great picture." /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/local-children.jpg" title="Everywhere you go the children beg to have their picture taken." alt="Everywhere you go the children beg to have their picture taken." /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/kite-flying.jpg" title="Flying a kite seems to be the popular form of entertainment." alt="Flying a kite seems to be the popular form of entertainment." /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/cows-inle-lake.jpg" title="Cows taking it easy Nyaungshwe." alt="Cows taking it easy Nyaungshwe." /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/boat-man-inle-lake.jpg" title="Our boat captain for the day on Lake Inle." alt="Our boat captain for the day on Lake Inle." /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/boat-ferry-myanmar.jpg" title="Ferry on Lake Inle." alt="Ferry on Lake Inle." /></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Siem Reap, Cambodia.]]></title>
+    <link href="http://kylethielk.github.io/blog/siem-reap-cambodia/"/>
+    <updated>2013-12-03T12:10:31-06:00</updated>
+    <id>http://kylethielk.github.io/blog/siem-reap-cambodia</id>
+    <content type="html"><![CDATA[<p><img src="http://kylethielk.github.io/media/images/cambodia-rice-field-feature.jpg" title="Cambodia Rice Field Header" alt="" /></p>
+
+<p>If there is one thing I regret about our 8 month trip throughout Southeast Asia, its that we didn&rsquo;t spend more time in Cambodia.  The temples of Angkor truly are astounding. The people are extremely friendly. The food is delicious. Everything is highly affordable.</p>
+
+<p><img src="http://kylethielk.github.io/media/images/angkor-wat-sunrise.jpg" title="Angkor Wat at Sunrise." alt="Angkor Wat at Sunrise." /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/walkway-angkor.jpg" title="Walkway around Angkor Wat." alt="Walkway around Angkor Wat." /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/traditional-dance.jpg" title="Traditional dance at Angkor Wat." alt="Traditional dance at Angkor Wat." /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/the-bayon-up-close.jpg" title="The faces of the Bayon." alt="The faces of the Bayon." /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/the-bayon.jpg" title="The Bayon Temple." alt="The Bayon Temple." /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/temple-carving-details.jpg" title="The details in every wall are astonishing." alt="The details in every wall are astonishing." /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/Ta-Prohm-Temple.jpg" title="The famous Ta Prohm" alt="The famous Ta Prohm" /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/taking-a-nap-angkor.jpg" title="Taking a nap." alt="Taking a nap." /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/ponds-of-angkor.jpg" title="The entrance to Angkor Wat, as seen form Angkor Wat." alt="The entrance to Angkor Wat, as seen form Angkor Wat." /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/moss-temple-angkor.jpg" title="Moss covered temples of Angkor." alt="Moss covered temples of Angkor." /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/manual-labor-at-angkor.jpg" title="Laboring in incredible heat." alt="Laboring in incredible heat." /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/fishing-in-angkor.jpg" title="Fishing for a big one." alt="Fishing for a big one." /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/doorways-angkor.jpg" title="Never ending doorways." alt="Never ending doorways." /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/children-of-angkor.jpg" title="All they wanted in return was candy." alt="All they wanted in return was candy." /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/boardwalk-angkor.jpg" title="Long walk home." alt="Long walk home." /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/beautiful-temples-angkor.jpg" title="No caption required." alt="No caption required." /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/another-temple-angkor.jpg" title="The temples are stunning." alt="The temples are stunning." /></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Thailand. Well touristed.]]></title>
+    <link href="http://kylethielk.github.io/blog/thailand/"/>
+    <updated>2013-12-01T11:35:01-06:00</updated>
+    <id>http://kylethielk.github.io/blog/thailand</id>
+    <content type="html"><![CDATA[<p><img src="http://kylethielk.github.io/media/images/thailand-featured.jpg" title="Thailand Roses." alt="" /></p>
+
+<p>I&rsquo;m just going to be up front about it. Thailand was my least favorite of the 8 countries we visited in Southeast Asia. It is the most touristed (which has its perks though when you are looking for some western amenities), had the least friendly people and the most scams. It did however have some of the best street food and local beer.</p>
+
+<p>The number of scams force you to constantly be on guard making it hard to relax. I was lied to multiple times, approached by scammers/hawkers constantly, double charged in taxis and overall felt the least welcomed by the locals.</p>
+
+<p>That being said there is a lot to do in Thailand and you can do so cheaply thanks to well developed infrastructure. For those into shopping, it can&rsquo;t be beat.</p>
+
+<p>Granted I have heard numerous people say the same about Vietnam, a country I loved. I am sure living there for 5 months has made me somewhat biased and perhaps I was simply unfortunate in my overall experience with Thailand.</p>
+
+<p><img src="http://kylethielk.github.io/media/images/catfish-on-a-stick.jpg" title="Catfish on a stick." alt="Catfish on a stick." /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/the-wats-of-chiang-mai.jpg" title="One of over 200 temples (&quot;Wat" alt="One of over 200 temples (&quot;Wat&quot;) in Chiang Mai." /> in Chiang Mai.&ldquo;)</p>
+
+<p><img src="http://kylethielk.github.io/media/images/thai-monk.jpg" title="Monks in Thailand are revered." alt="Monks in Thailand are revered." /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/street-food-chiang-mai.jpg" title="Street Food in Chiang Mai. Delicious." alt="Street Food in Chiang Mai. Delicious." /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/siam-square-bangkok.jpg" title="Siam Square." alt="Siam Square. " /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/khao-san-rd-bangkok.jpg" title="Infamous Khao San Rd, Bangkok." alt="Infamous Khao San Rd, Bangkok." /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/guarding-the-temples-chiang.jpg" title="Guarding the temple for centuries." alt="Guarding the temple for centuries." /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/grand-palace-bangkok.jpg" title="The Grand Palace, Bangkok." alt="The Grand Palace, Bangkok." /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/flower-market-bangkok.jpg" title="Taking in the flower market in Bangkok." alt="Taking in the flower market in Bangkok." /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/flakes-of-gold.jpg" title="Gold flakes being places on Buddha." alt="Gold flakes being places on Buddha." /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/elephants-of-thailand.jpg" title="The famous elephants of Thailand. I prefer the stone ones that cannot be mistreated." alt="The famous elephants of Thailand. I prefer the stone ones that cannot be mistreated." /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/dragon-architecture.jpg" title="Dragon Temple Architecture. A common theme in Thailand." alt="Dragon Temple Architecture. A common theme in Thailand." /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/chiang-mai-old-city.jpg" title="Chiang Mai Old City Wall." alt="Chiang Mai Old City Wall." /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/tuk-tuk-in-bangkok.jpg" title="Tuk Tuk in Bangkok." alt="Tuk Tuk in Bangkok. " /></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Palawan, Philippines]]></title>
+    <link href="http://kylethielk.github.io/blog/palawan-philippines/"/>
+    <updated>2013-11-28T17:22:12-06:00</updated>
+    <id>http://kylethielk.github.io/blog/palawan-philippines</id>
+    <content type="html"><![CDATA[<p><img src="http://kylethielk.github.io/media/images/philippines-featured.jpg" title="Philippines Dog Eyes" alt="" /></p>
+
+<p>Palawan was one of the highlights of our 9 month SE Asia journey. Some of the most stunning scenery, friendliest people and for the most affordable prices. The people are seriously friendly (Port Barton gets the nod for the most friendly people of our entire trip). Fresh seafood is abundant. Our favorite meals were fish caught 5 minutes prior and cooked on a tiny grill on the stern of the boat. The surrounding islands of Coron are the most beautiful I have ever seen.</p>
+
+<p>Puerto Princesa is the main point of entry into Palawan. An energetic city on the rise. Getting to Port Barton during the rainy season&hellip;.good luck.  One of our favorite places, ever. We thought El Nido had the most amazing islands anywhere&hellip;.until we went to Coron.  Diving inside japanese shipwrecks? Check. Crystal clear freshwater lakes? Check. Crystal clear reefs? Check.</p>
+
+<p><img src="http://kylethielk.github.io/media/images/coron-philippines.jpg" title="Coron Island." alt="Coron Island." /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/rock-formations-coron.jpg" title="The rock formations are stunning in Coron." alt="The rock formations are stunning in Coron." /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/coron-islands.jpg" title="The islands of Coron." alt="The islands of Coron." /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/kayangan-lake-coron.jpg" title="Kayangan Lake. &quot;The cleanest lake in Asia&quot;" alt="Kayangan Lake. &quot;The cleanest lake in Asia&quot;" /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/green-lagoon-coron.jpg" title="Green Lagoon, Coron." alt="Green Lagoon, Coron." /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/sabang-lazy-dog.jpg" title="Lazy Sunday Afternoon." alt="Lazy Sunday Afternoon." /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/puerto-princesa-tricycle.jpg" title="Tricycle in Puerto Princesa." alt="Tricycle in Puerto Princesa." /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/port-barton-cove.jpg" title="The bay of Port Barton." alt="The bay of Port Barton." /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/port-barton-bubble.jpg" title="Blowing bubbles in Port Barton." alt="Blowing bubbles in Port Barton." /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/port-barton-boat.jpg" title="Port Barton. All accommodations are right on the beach." alt="Port Barton. All accommodations are right on the beach." /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/port-barton-balloon.jpg" title="Adorable." alt="Adorable." /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/palawan-bus.jpg" title="Long distance transport in Palawan." alt="Long distance transport in Palawan." /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/neptune-diving-bus.jpg" title="Neptune Diving's Bus." alt="Neptune Diving's Bus." /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/fresh-sea-urchins.jpg" title="Fresh Sea Urchins." alt="Fresh Sea Urchins." /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/fresh-parrot-fish-and-prawn.jpg" title="Fresh Parrot Fish and Prawns." alt="Fresh Parrot Fish and Prawns." /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/children-playing-sabang.jpg" title="Children playing on the dock in Sabang." alt="Children playing on the dock in Sabang." /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/underwater-cave-palawan.jpg" title="Underground Cave in Puerto Princesa." alt="Underground Cave in Puerto Princesa." /></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Journey through Malaysia]]></title>
+    <link href="http://kylethielk.github.io/blog/journey-through-malaysia/"/>
+    <updated>2013-11-25T16:02:19-06:00</updated>
+    <id>http://kylethielk.github.io/blog/journey-through-malaysia</id>
+    <content type="html"><![CDATA[<p><img src="http://kylethielk.github.io/media/images/malaysia-featured-squid.jpg" title="Malaysia Squid Food Stand Header" alt="" /></p>
+
+<p>Food. Varied, delicious food. This is what I will remember about Malaysia. The food courts (different than food courts we know in the US) are teeming with options. Indian, Chinese and Malay all simmer together to create a hodgepodge of deliciousness. Most dishes for under $2.</p>
+
+<p>Our trip to Malaysia was short at just 2 weeks but we were able to cover quite a bit of ground.  We started in Langkawi, headed to Penang, and finally crossed over to Malaysian Borneo (Kuching).</p>
+
+<p>Langkawi was a beautiful island retreat, Penang a teeming city with more than enough options for the tourist, and Borneo was a nature lover&rsquo;s dream.</p>
+
+<p><img src="http://kylethielk.github.io/media/images/bako-ants.jpg" title="Ants in Bako Park. Miles of ants." alt="Ants in Bako Park. Miles of ants." /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/bako-national-park.jpg" title="Bako National Park entrance." alt="Bako National Park entrance." /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/bako-the-cobra.jpg" title="The famed cobra of Bako National Park." alt="The famed cobra of Bako National Park." /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/bako-waterfall.jpg" title="The waterfall we walked 6km to reach in Bako National Park." alt="The waterfall we walked 6km to reach in Bako National Park." /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/camera-museum.jpg" title="The Camera Museum in Penang." alt="The Camera Museum in Penang." /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/langkawi-from-above.jpg" title="Langkawi from the top of the Cable Car." alt="Langkawi from the top of the Cable Car." /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/langkawi-sky-bridge.jpg" title="Langkawi Sky Bridge." alt="Langkawi Sky Bridge." /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/langkawi-snail.jpg" title="I'm thinking of quitting my day job." alt="I'm thinking of quitting my day job." /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/penang-food-court.jpg" title="A food court vendor in Penang." alt="A food court vendor in Penang." /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/penang-heritage-walk.jpg" title="Penang Heritage Walk." alt="Penang Heritage Walk." /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/penang-moustache-houze.jpg" title="The Moustache Houze. Closed unfortunately." alt="The Moustache Houze. Closed unfortunately." /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/penang-temples.jpg" title="Guarding his temple." alt="Guarding his temple." /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/Semenggoh-Orangutan-Kuching.jpg" title="Semenggoh Orangutan Kuching." alt="Semenggoh Orangutan Kuching." /></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Labuan Bajo, Indonesia]]></title>
+    <link href="http://kylethielk.github.io/blog/labuan-bajo-indonesia/"/>
+    <updated>2013-11-21T13:39:04-06:00</updated>
+    <id>http://kylethielk.github.io/blog/labuan-bajo-indonesia</id>
+    <content type="html"><![CDATA[<p><img src="http://kylethielk.github.io/media/images/labuan-bajo-featured.jpg" title="Labuan Bajo Beach Header" alt="" /></p>
+
+<p>Labuan Bajo is the main launching point for excursions to Komodo National Park. There is a tiny airport a few KM from town (walking into town took us about 50 minutes, not recommended during the heat of the day). The town itself has little draw other than a place to stay and grab a meal. Following the trend of Bali and Lombok during high season expect to pay a lot for a little, especially for accommodations (compared to the rest of Southeast Asia).</p>
+
+<p>The main attraction is the diving/snorkeling/trekking/sight-seeing on the surrounding islands. The scenery is phenomenal, the water crystal clear and the aquatic life abundant. Its a snorkeler&rsquo;s and diver&rsquo;s dream.  Seraya island was the best snorkeling I&rsquo;ve ever done by far.</p>
+
+<p>Labuan Bajo can be difficult to get to but definitely worth the effort. Just keep in mind the expectation that a boat is required for anything of interest.</p>
+
+<p><img src="http://kylethielk.github.io/media/images/labuan-bajo-airport.jpg" title="Labuan Bajo Airport." alt="Labuan Bajo Airport." /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/komodo-dragons.jpg" title="Some Komodo Dragons cuddling. Too bad their cannibals." alt="Some Komodo Dragons cuddling. Too bad their cannibals." /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/labuan-bajo-island.jpg" title="During dry season...its really dry." alt="During dry season...its really dry." /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/labuan-bajo-island-trip.jpg" title="The drop-off is stunning. We snorkeled with a pack of 7 sharks here." alt="The drop-off is stunning. We snorkeled with a pack of 7 sharks here." /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/labuan-bajo-sunset.jpg" title="Phenomenal sunsets to be had every night in Labuan Bajo." alt="Phenomenal sunsets to be had every night in Labuan Bajo." /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/P8251780.jpg" title="The colors. Just amazing." alt="The colors. Just amazing." /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/seraya-island.jpg" title="Seraya Island. Our own private paradise for three days." alt="Seraya Island. Our own private paradise for three days." /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/seraya-island-boat-toilet.jpg" title="A Toilet. A hole into the ocean." alt="A Toilet. A hole into the ocean." /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/bintang.jpg" title="Bintang Beer, my favorite of all Southeast Asian Beer." alt="Bintang Beer, my favorite of all Southeast Asian Beer." /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/seraya-sun-shining.jpg" title="Finding a way through the clouds." alt="Finding a way through the clouds." /></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[7 Habits of Highly Successful People, 96.05% Too Long.]]></title>
+    <link href="http://kylethielk.github.io/blog/7-habits-of-highly-successful-people-96-05-too-long/"/>
+    <updated>2013-10-23T02:55:53-05:00</updated>
+    <id>http://kylethielk.github.io/blog/7-habits-of-highly-successful-people-96-05-too-long</id>
+    <content type="html"><![CDATA[<p>Date Read: October 11 &ndash; 15th, 2013</p>
+
+<p><a href="http://www.amazon.com/Habits-Highly-Effective-People-Powerful/dp/1455892823">Direct Amazon Link</a></p>
+
+<p>I understand that Stephen R. Covey is highy respected and I&rsquo;m sure he rakes in $5,000+/hour consulting fees but really this book for me still falls into the &lsquo;self help&rsquo; genre where most information is common sense and that which isn&rsquo;t can be found on any &lsquo;self help&rsquo; blog for free.</p>
+
+<p>That is not to say I do not agree with the underlying premise of each of the 7 habits. In fact Habit 1 (&ldquo;Be Proactive&rdquo;) and 5 (&ldquo;Seek first to understand, then to be understood&rdquo;) in particular I think we should all be mindful of every day. Habit 6 is titled &ldquo;Synergize&rdquo;, Habit 7 is titled &ldquo;Sharpen the Saw&rdquo;. No explanation is needed as to why &lsquo;fluff&rsquo; is the first word that comes to mind.</p>
+
+<p>This is how I imagine Covey&rsquo;s conversation with his publisher after coming up with the idea for the book.</p>
+
+<p>Covey: &ldquo;I have this great idea for a new book&rdquo;.
+Publisher: &ldquo;Excellent, how far along in the process are you?&rdquo;
+Covey: &ldquo;Finished.&rdquo;
+Publisher: &ldquo;How long is it?&rdquo;
+Covey: &ldquo;15 pages.&rdquo;
+Publisher: &ldquo;What? We can&rsquo;t sell a 15 page pamphlet for $19.99. Fluff it up!&rdquo;</p>
+
+<p>1 Month Later:</p>
+
+<p>Covey: &ldquo;Ok. The book is complete. Still 15 pages of good information, but now with 365 pages of fluff as an added bonus!&rdquo;</p>
+
+<p>Seriously read this <a href="http://en.wikibooks.org/wiki/Seven_Habits_Study_Guide/Quick_overview_of_the_seven_habits">WikiBooks&#8217;&lsquo; summary</a>, and save yourself the time and money. Update: Even better read this <a href="http://www.forbes.com/sites/ericjackson/2012/07/24/the-only-thing-you-need-to-remember-about-the-seven-habits-of-highly-effective-people/">Forbes&#8217; Summary</a>.</p>
+
+<p><em>Note: This post is part of my</em> <a href="http://www.kylethielk.com/blog/26-books-in-26-weeks/">26 Books in 26 Weeks Goal</a>.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Enders Game, Excellent.]]></title>
+    <link href="http://kylethielk.github.io/blog/enders-game-excellent/"/>
+    <updated>2013-10-20T10:56:46-05:00</updated>
+    <id>http://kylethielk.github.io/blog/enders-game-excellent</id>
+    <content type="html"><![CDATA[<p><img src="http://kylethielk.github.io/media/images/enders-game-cover.jpg" title="Enders Game Cover.." alt="Enders Game Cover." /></p>
+
+<p>Date Read: September 20 &ndash; 25th, 2013</p>
+
+<p><a href="http://www.amazon.com/Enders-Game-The-Ender-Quintet-ebook/dp/B003G4W49C">Direct Amazon Link</a></p>
+
+<p>After hearing such good things about Ender&rsquo;s Game I was afraid my expectations were set too high and I would be disappointed. My general distaste for science fiction healthily balanced out the high expectations though and I ended up thoroughly enjoying it.</p>
+
+<p>What I like about Ender&rsquo;s Game is that the science fiction complements the story and the characters, not the other way around. The story and character development comes first, science fiction is simply there to help.</p>
+
+<p>The children in Ender&rsquo;s game are young but their opinions and thoughts are of that of someone much older. For me this was less believable than the science fiction. Adding five years to all of the characters would not minimize the effect nor would it detract from the point but would lend itself to a more credible premise. This is my one complaint.</p>
+
+<p>The story is fantastic. It flows very well and is enjoyable the whole time. In fact I found myself wishing it was longer. I can understand why it is a book people read multiple times, I already want to read it again.</p>
+
+<p>Definitely in my top 5 fiction books (granted that list is barely over 5, but I don&rsquo;t see it dropping out either).</p>
+
+<p><em>Note: This post is part of my <a href="http://www.kylethielk.com/blog/26-books-in-26-weeks/">26 Books in 26 Weeks Goal</a>.</em></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Outliers, Thought-Provoking Storytelling.]]></title>
+    <link href="http://kylethielk.github.io/blog/outliers-thought-provoking-storytelling/"/>
+    <updated>2013-10-12T21:14:34-05:00</updated>
+    <id>http://kylethielk.github.io/blog/outliers-thought-provoking-storytelling</id>
+    <content type="html"><![CDATA[<p><img src="http://kylethielk.github.io/media/images/outliers_cover.jpg" title="Outliers Book Cover" alt="Outliers Book Cover" /></p>
+
+<p>Read: September 20 – 25th, 2013</p>
+
+<p><a href="http://www.amazon.com/Outliers-Story-Success-Malcolm-Gladwell/dp/0316017930">Direct Amazon Link</a></p>
+
+<p>Malcolm Gladwell is a fantastic writer and story teller. I imagine this is why his books sell so well and he has so many fans. I read Outliers in just a few days, granted it is a short book but I was also on a beach in the Philippines and I frequently had to remind myself of this fact so I didn&rsquo;t spend too much time in the room reading.</p>
+
+<p>I was going to give the book a 5 star rating. I bought into Outliers hook line and sinker. The book basically argues that the general consensus the public and the media has of highly successful people (especially those that came form a less than favorable background) clawing and fighting themselves to the top through sheer determination and genius alone is a fallacy. Gladwell sets out to &lsquo;prove&rsquo; that it is in fact determination and hard work coupled with very fortunate circumstances and a lot of help from other people. The premise is very thought provoking and presents many case studies (read: South Korean Airlines) that are fascinating.</p>
+
+<p>As a quick example Gladwell points out that in the world of Canadian Hockey, a large percentage of the elite players were born in the same few months. As children this meant they were older than their peers in the same leagues and thus more developed and larger. This small advantage when younger is quickly magnified as the better players receive more training and attention. This ties into Gladwell&rsquo;s 10,000 hour theory then; since the players receive more training and attention, they reach the 10,000 hour mark much quicker and thus become the &lsquo;elite&rsquo; players. The elite players are the elite because of one small advantage as a child that creates a snowball effect throughout their life.</p>
+
+<p>I was a little behind with this book summary, I&rsquo;m writing it a few weeks after finishing the book. The other day I completely by chance stumbled upon an article by Paul Raeburn on MIT&rsquo;s Science Journal: <a href="http://ksj.mit.edu/tracker/2013/10/should-we-stop-believing-malcolm-gladwel">Should we stop believing Malcolm Gladwell</a> and this follow-up: <a href="http://ksj.mit.edu/tracker/2013/10/malcolm-gladwell-speaks-can-narrative-be">Malcolm Gladwell speaks: Can narrative be misused in journalism?</a></p>
+
+<blockquote>&#8220;I am a story-teller, and I look to academic research … for ways of augmenting story-telling. &#8230;we’re obsessed with things like coherence, consistency, neatness of argument. Readers are indifferent to those things.&#8221; -Malcolm Gladwell
+
+&#8220;All writing about social science need not be presented with the formality and precision of the academic world. There is a place for storytelling, in all of its messiness.&#8221; -Malcolm Gladwell</blockquote>
+
+
+<p>Gladwell absolutely presents his work in Outliers as fact, as well-researched and verified fact (which I assume he does in his other books as well). These comments from Gladwell himself seem to directly contradict this. They leave me feeling slightly betrayed. Gladwell&rsquo;s <a href="http://www.slate.com/articles/health_and_science/science/2013/10/malcolm_gladwell_s_david_and_goliath_he_explains_why_christopher_chabris.html">response to these criticisms</a> does absolutely nothing to disprove his critics and simply tells them to &ldquo;calm down&rdquo;.</p>
+
+<p>Outliers must be taken as a story, a very good story. Do not take it as well researched journalism or fact even if it is presented that way and you will be much better for it.</p>
+
+<p><em>Note: This post is part of my <a href="http://www.kylethielk.com/blog/26-books-in-26-weeks/">26 Books in 26 Weeks Goal</a>.</em></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[The Stand, Brilliant...Long.]]></title>
+    <link href="http://kylethielk.github.io/blog/the-stand-brilliant-long/"/>
+    <updated>2013-10-11T09:58:16-05:00</updated>
+    <id>http://kylethielk.github.io/blog/the-stand-brilliant-long</id>
+    <content type="html"><![CDATA[<p><img src="http://kylethielk.github.io/media/images/The_Stand_cover.jpg" title="The Stand Cover" alt="The Stand Cover" />
+Read: September 2 &ndash; 20th, 2013</p>
+
+<p><a href="http://www.amazon.com/Stand-Stephen-King/dp/0307947300/">Direct Amazon Link</a></p>
+
+<p>I have always wanted to read a Stephen King book and now that I&rsquo;ve committed myself to reading <a href="http://www.kylethielk.com/blog/26-books-in-26-weeks/">26 books in 26 weeks</a>, there could not not be a better time.  Stephen King&rsquo;s collection of works is quite large and with very little prior knowledge of any of them I simply chose the one that appeared to be the most popular, The Stand.</p>
+
+<p>The fact that it is over 800 pages is a little intimidating. In fact I attempted to read the first Game of Thrones book which is similar in length and only made it 60% of the way through.  Fortunately the number of characters and story lines that the reader must keep straight is far more manageable in The Stand. Game of Thrones is just far too difficult to read unless done so in a near continuous span of time.</p>
+
+<p>Stephen King&rsquo;s style of writing in The Stand is simple but descriptive. I found the story intriguing and the way in which the character&rsquo;s stories were wound together made it that much easier to read and thus enjoy. I never once found myself bored or at risk of  losing interest. There were multiple times that I had to force myself to take a break.</p>
+
+<p>A minor complaint with the book is that there are a few major questions left unanswered. The supernatural aspects of the story are never really presented with a cause or explanation.  They simply happen and we have to accept them.</p>
+
+<p>In order to maintain a level of variety (and ensure I can actually finish 26 books by the end of the year) I will probably not include another Stephen King novel in the list as much as I would like to.  I do however plan on picking up more of them for pleasure after this project is complete.</p>
+
+<p><em>Note: This post is part of my <a href="http://www.kylethielk.com/blog/26-books-in-26-weeks/">26 Books in 26 Weeks Goal</a>.</em></p>
+]]></content>
+  </entry>
+  
+</feed>

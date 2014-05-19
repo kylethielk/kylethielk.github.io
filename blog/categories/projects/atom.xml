@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Projects | Kyle Thielk]]></title>
+  <link href="http://kylethielk.github.io/blog/categories/projects/atom.xml" rel="self"/>
+  <link href="http://kylethielk.github.io/"/>
+  <updated>2014-05-19T09:22:51-05:00</updated>
+  <id>http://kylethielk.github.io/</id>
+  <author>
+    <name><![CDATA[Kyle Thielk]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Not Too Manly To Keep A Journal.]]></title>
+    <link href="http://kylethielk.github.io/blog/not-too-manly-to-keep-a-journal/"/>
+    <updated>2013-07-10T06:57:14-05:00</updated>
+    <id>http://kylethielk.github.io/blog/not-too-manly-to-keep-a-journal</id>
+    <content type="html"><![CDATA[<p>Writing on a daily basis (often referred to as &ldquo;Keeping a Journal&rdquo;) has been a goal of mine for a while. I have always been mediocre at best and never really enjoyed it. More than likely its due to the fact that most of my writing comprised of late nights cramming in a paper that I should have started a week earlier on a topic I had little interest in (like Celtic Architecture).</p>
+
+<p>Then I started writing just to write. To put my thoughts down on paper, not to persuade a boss, or get a good grade. I actually started to enjoy it and immediately noticing the <a href="http://www.ducttapemarketing.com/blog/2013/05/20/benefits-of-writing/">benefits</a> <a href="http://zenhabits.net/write-daily/">many</a> <a href="http://lyndaryoung.blogspot.com/2012/09/6-benefits-of-writing-every-day.html">people</a> <a href="http://www.myrkothum.com/the-benefits-of-writing-a-personal-journal/">have</a> <a href="http://www.wordstrumpet.com/2010/01/the-benefits-of-writing-daily.html">written</a> <a href="http://michaelhyatt.com/daily-journal.html">about</a> <a href="http://www.utexas.edu/features/archive/2005/writing.html">before</a>.</p>
+
+<p>Now the first thing I do in the morning is spend 10-15 minutes just writing.  I&rsquo;ve found it puts me in the frame of mind to be productive. Try it for yourself. Instead of checking email, Facebook, or Twitter simply write your thoughts down. Generally I try to reflect on what I achieved yesterday (and what I could have done better), what I want to achieve today and anything else that happens to be on my mind at the time.</p>
+
+<p>Naturally being a developer and unable to find the perfect way to write daily, I created my own tool that suits my needs perfectly. <a href="http://www.dailyoje.com">DailyOJE is a distraction free way to write daily.</a></p>
+
+<p>I hope that someone else finds it as useful as I do.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Twitter-FindToFollow Update]]></title>
+    <link href="http://kylethielk.github.io/blog/twitter-findtofollow-update/"/>
+    <updated>2013-06-03T01:50:29-05:00</updated>
+    <id>http://kylethielk.github.io/blog/twitter-findtofollow-update</id>
+    <content type="html"><![CDATA[<p>My recently released Open Source Twitter tool <a href="https://github.com/kylethielk/twitter-findtofollow/">FindToFollow</a> has received some much needed updates and can now be used to automatically follow users that have been filtered. The follows occur successively with a randomly generated interval (with a set minimum and maximum) between each follow.</p>
+
+<p>On the roadmap:</p>
+
+<ol>
+<li><p> Filter currently followed users based on a set of criteria so that we can unfollow them automatically for example: &ldquo;Unfollow all users who have not followed me back in less than three days since I&rsquo;ve followed them&rdquo;. Similar to what ManageFlitter provides. We however will have more information as we know when users were followed and unfollowed, information ManageFlitter does not have.</p></li>
+<li><p> Statistics about daily/weekly/monthly follower and friend counts.</p></li>
+</ol>
+
+
+<p><img src="/media/images/twitter-findtofollow-screenshot.png" title="Twitter FindToFollow main filter screen." alt="Automatically filter potential twitter users." /></p>
+
+<p><img src="/media/images/twitter-findtofollow-screenshot-2.png" title="FindToFollow automatically follow selected users." alt="FindToFollow automatically follow selected users." /></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Twitter: FindToFollow]]></title>
+    <link href="http://kylethielk.github.io/blog/twitter-findtofollow/"/>
+    <updated>2013-05-20T22:53:47-05:00</updated>
+    <id>http://kylethielk.github.io/blog/twitter-findtofollow</id>
+    <content type="html"><![CDATA[<p>I have open sourced a tool I wrote to find potential followers on Twitter by allowing you to apply certain filtering criteria against a certain user&rsquo;s list of followers.</p>
+
+<p>I recently undertook a pseudo-experiment to find the best way to grow my following on Twitter (later post to follow with results) and realized that I could easily automate a lot of what I was doing manually. This project is the result of that.</p>
+
+<p>The tool is call <a href="https://github.com/kylethielk/twitter-findtofollow">twitter-findtofollow</a> and is released under the MIT License. Click the link for more detailed instructions about how it works and how to use it.</p>
+
+<p><img src="/media/images/twiter-findtofollow.png" title="Twitter-FindToFollow Screenshot" alt="Twitter-FindToFollow Screenshot" /></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Wordpress Plugin Development: Using Media Library]]></title>
+    <link href="http://kylethielk.github.io/blog/wordpress-plugin-development-using-media-library/"/>
+    <updated>2013-02-15T11:58:33-06:00</updated>
+    <id>http://kylethielk.github.io/blog/wordpress-plugin-development-using-media-library</id>
+    <content type="html"><![CDATA[<p>When porting <a href="https://github.com/kylethielk/jquery-refolio"> jquery-refolio</a> over to wordpress one of the things I wanted to do was tie into wordpress' Media Library. This makes it extremely easy to re-use images already in wordpress and it would mean I didn&rsquo;t have to <a href="http://www.codinghorror.com/blog/2009/02/dont-reinvent-the-wheel-unless-you-plan-on-learning-more-about-wheels.html">re-invent the wheel</a>. Shockingly enough I couldn&rsquo;t find it documented anywhere in Wordpress' officials documentation and even a few quick googles came up empty.</p>
+
+<p>I eventually stumbled upon the answer and I was suprised at how easy it was. Hopefully this will help someone in the future trying to do the same thing.</p>
+
+<p>To launch the media manager from javascript:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'>   <span class="c1">//launch media library popup</span>
+</span><span class='line'>   <span class="nx">tb_show</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">lsquo</span><span class="p">;</span><span class="nx">Choose</span> <span class="nx">Portfolio</span> <span class="nx">Image</span><span class="o">&amp;</span><span class="nx">rsquo</span><span class="p">;,</span> <span class="o">&amp;</span><span class="nx">lsquo</span><span class="p">;</span><span class="nx">media</span><span class="o">-</span><span class="nx">upload</span><span class="p">.</span><span class="nx">php</span><span class="o">?</span><span class="nx">type</span><span class="o">=</span><span class="nx">image</span><span class="o">&amp;</span><span class="nx">amp</span><span class="p">;</span><span class="nx">TB_iframe</span><span class="o">=</span><span class="kc">true</span><span class="o">&amp;</span><span class="nx">rsquo</span><span class="p">;);</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>You must then register a callback as such (the name is important and must be registered in the global namespace):</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="err">/&lt;em&gt;*</span>
+</span><span class='line'><span class="o">*</span> <span class="err">@</span><span class="nx">param</span> <span class="nx">html</span> <span class="nx">Will</span> <span class="nx">be</span> <span class="nx">passed</span> <span class="nx">the</span> <span class="nx">html</span> <span class="k">for</span> <span class="nx">the</span> <span class="nx">selected</span> <span class="nx">image</span><span class="p">.</span>
+</span><span class='line'><span class="o">&lt;</span><span class="sr">/em&gt;/</span>
+</span><span class='line'><span class="nb">window</span><span class="p">.</span><span class="nx">send_to_editor</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">html</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>   <span class="kd">var</span> <span class="nx">imageUrl</span> <span class="o">=</span> <span class="nx">jQuery</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">lsquo</span><span class="p">;</span><span class="nx">img</span><span class="o">&amp;</span><span class="nx">rsquo</span><span class="p">;,</span> <span class="nx">html</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">lsquo</span><span class="p">;</span><span class="nx">src</span><span class="o">&amp;</span><span class="nx">rsquo</span><span class="p">;);</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>   <span class="c1">//Hide media library popup.</span>
+</span><span class='line'>   <span class="nx">tb_remove</span><span class="p">();</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="p">};</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>The callback will be invoked when the user has selected an image to insert. Here is a sample HTML snippet passed back to the callback function:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;http://www.kylethielk.com/blog/?attachment_id=971&quot;</span> <span class="na">rel=</span><span class="s">&quot;attachment wp-att-971&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">&quot;http://www.kylethielk.com/blog/wp-content/uploads/2013/02/big-image2.jpg&quot;</span> <span class="na">alt=</span><span class="s">&quot;&quot;</span> <span class="na">width=</span><span class="s">&quot;484&quot;</span> <span class="na">height=</span><span class="s">&quot;317&quot;</span> <span class="na">class=</span><span class="s">&quot;alignnone size-full wp-image-971&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;/a&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Good luck!</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Javascript Namespaces & First Open Source Project]]></title>
+    <link href="http://kylethielk.github.io/blog/javascript-namespaces-first-open-source-project/"/>
+    <updated>2013-01-11T15:21:10-06:00</updated>
+    <id>http://kylethielk.github.io/blog/javascript-namespaces-first-open-source-project</id>
+    <content type="html"><![CDATA[<p>Direct Link to Github: <a href="https://github.com/kylethielk/js-namespace">js-namespace</a></p>
+
+<p>One of the first issues any reasonable size javascript projects encounters is proper &lsquo;modularization&rsquo; of code.  This becomes especially critical when you are</p>
+
+<ul>
+<li><p>Working on a multi-person team.</p></li>
+<li><p>Using many third party libraries.</p></li>
+</ul>
+
+
+<p>The global namespace quickly becomes polluted and the chances of a collision become higher. The solution for this issue is menial in most programming languages. In Java there are packages, C# has namespaces, python has namespaces etc&hellip; Javascript has no out of the box language support for a similar concept. There are literally hundreds of different implementations available online. Searching for &lsquo;Javascript Namespaces&rsquo; on any search engine will yield plenty of options.</p>
+
+<p>The basic approach works but is tedious and requires that all parts of the &lsquo;namespace&rsquo; be predefined:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">Company</span> <span class="o">=</span> <span class="p">{};</span>
+</span><span class='line'><span class="nx">Company</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="o">&amp;</span><span class="nx">ldquo</span><span class="p">;</span><span class="nx">Widget</span> <span class="nx">Company</span><span class="o">&amp;</span><span class="nx">rdquo</span><span class="p">;;</span>
+</span><span class='line'><span class="nx">Company</span><span class="p">.</span><span class="nx">greeting</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span>
+</span><span class='line'><span class="p">{</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">pre</span><span class="o">&gt;&lt;</span><span class="nx">code</span><span class="o">&gt;</span><span class="k">return</span> <span class="s2">&quot;Hello, we are&quot;</span> <span class="o">+</span> <span class="nx">foo</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="err">/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>For example to create the namespace &ldquo;Company.Organization.TeamA.Product.Core&rdquo; one could:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">Company</span> <span class="o">=</span> <span class="p">{};</span>
+</span><span class='line'><span class="nx">Company</span><span class="p">.</span><span class="nx">Organization</span> <span class="o">=</span> <span class="p">{};</span>
+</span><span class='line'><span class="nx">Company</span><span class="p">.</span><span class="nx">Organization</span><span class="p">.</span><span class="nx">TeamA</span> <span class="o">=</span> <span class="p">{};</span>
+</span><span class='line'><span class="c1">//&amp;hellip;and so on</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>If you later decide you want to add Company.Organization.TeamB you have to be extra careful not to override your existing declarations:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">Company</span> <span class="o">=</span> <span class="nx">Company</span> <span class="o">||</span> <span class="p">{};</span>
+</span><span class='line'><span class="nx">Company</span><span class="p">.</span><span class="nx">Organization</span> <span class="o">=</span> <span class="nx">Company</span><span class="p">.</span><span class="nx">Organization</span> <span class="o">||</span> <span class="p">{};</span>
+</span><span class='line'><span class="nx">Company</span><span class="p">.</span><span class="nx">Organization</span><span class="p">.</span><span class="nx">TeamB</span> <span class="o">=</span> <span class="nx">Company</span><span class="p">.</span><span class="nx">Organization</span><span class="p">.</span><span class="nx">TeamB</span> <span class="o">||</span> <span class="p">{};</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>After exploring (and using) many of the different solutions available online I decided to write my own. Its simple, easy to use and is <strong>my first open source project&hellip;.ever</strong>! I am of course <a href="http://www.codinghorror.com/blog/2009/02/dont-reinvent-the-wheel-unless-you-plan-on-learning-more-about-wheels.html">re-inventing the wheel</a> but I wanted to something simple to start my open source journey with.</p>
+
+<p>It is available under the MIT license and the source can be found on github under <a href="https://github.com/kylethielk/js-namespace">js-namespace</a>. Its usage is simple.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">JsNamespace</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">ldquo</span><span class="p">;</span><span class="nx">Company</span><span class="p">.</span><span class="nx">Organization</span><span class="p">.</span><span class="nx">TeamA</span><span class="p">.</span><span class="nx">Product</span><span class="p">.</span><span class="nx">Core</span><span class="o">&amp;</span><span class="nx">rdquo</span><span class="p">;).</span><span class="nx">MyClass</span> <span class="o">=</span> <span class="p">{};</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>All namespaces and their immediate children will also have a &lsquo;className&rsquo; defined. I&rsquo;ve found this to be invaluable when logging.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">JsNamespace</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">ldquo</span><span class="p">;</span><span class="nx">Company</span><span class="p">.</span><span class="nx">Organization</span><span class="p">.</span><span class="nx">TeamA</span><span class="p">.</span><span class="nx">Product</span><span class="p">.</span><span class="nx">Core</span><span class="o">&amp;</span><span class="nx">rdquo</span><span class="p">;).</span><span class="nx">MyClass</span> <span class="o">=</span>
+</span><span class='line'><span class="p">{</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">pre</span><span class="o">&gt;&lt;</span><span class="nx">code</span><span class="o">&gt;</span><span class="nx">myFunction</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">className</span> <span class="o">+</span> <span class="s2">&quot;: A log message&quot;</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="o">&lt;</span><span class="err">/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="p">};</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span>
+</span><span class='line'><span class="p">{</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">pre</span><span class="o">&gt;&lt;</span><span class="nx">code</span><span class="o">&gt;</span><span class="nx">JsNamespace</span><span class="p">.</span><span class="nx">buildClassNames</span><span class="p">();</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">Company</span><span class="p">.</span><span class="nx">Organization</span><span class="p">.</span><span class="nx">TeamA</span><span class="p">.</span><span class="nx">Product</span><span class="p">.</span><span class="nx">Core</span><span class="p">.</span><span class="nx">MyClass</span><span class="p">.</span><span class="nx">myFunction</span><span class="p">();</span>
+</span><span class='line'><span class="o">&lt;</span><span class="err">/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="p">});</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Looks like my <a href="http://www.kylethielk.com/blog/open-source-projects-and-github-as-a-resume/">public accountability</a> is off to a good start.</p>
+
+<p><img src="/media/images/js-namespace.gif" title="JS Namespace" alt="JS Namespace" /></p>
+]]></content>
+  </entry>
+  
+</feed>
