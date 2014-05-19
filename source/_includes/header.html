@@ -1,0 +1,25 @@
+<div class="wrap">
+	<a class="site-logo" href="http://www.kylethielk.com/blog/" title="Kyle Thielk" rel="home">
+	                <img src="http://gravatar.com/avatar/89c3806c84626af0b8a57f9b1f6358c6/?s=120&amp;d=retro" width="120" height="120" alt="" class="no-grav header-image">
+	            </a>
+	<h1><a href="{{ root_url }}/">{{ site.title }}</a></h1>
+	<h4>{{site.subtitle}}</h4>
+</div>
+<nav id="main-nav" style="display:none">{% include navigation.html %}</nav>
+<nav id="mobile-nav" style="display:none">
+	<div class="alignleft menu">
+		<a class="button">Menu</a>
+		<div class="container">{% include navigation.html %}</div>
+	</div>
+	<div class="alignright search">
+		<a class="button"></a>
+		<div class="container">
+			<form action="{{ site.simple_search }}" method="get">
+				<input type="text" name="q" results="0">
+				<input type="hidden" name="q" value="site:{{ site.url | shorthand_url }}">
+			</form>
+		</div>
+	</div>
+</nav>
+
+{% include custom/header.html %}
