@@ -3,7 +3,7 @@ layout: post
 title: "Move BitBucket Repository to Github"
 date: 2014-05-22 09:10:55 -0500
 comments: true
-categories: 
+categories: Tech
 ---
 
 Alternatively titled "Move Remote Git repository to a new Host". These instructions apply for any remote git hosts.
