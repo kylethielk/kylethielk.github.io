@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Tech | Kyle Thielk]]></title>
   <link href="http://kylethielk.github.io/blog/categories/tech/atom.xml" rel="self"/>
   <link href="http://kylethielk.github.io/"/>
-  <updated>2014-05-22T09:29:40-05:00</updated>
+  <updated>2014-05-22T11:38:51-05:00</updated>
   <id>http://kylethielk.github.io/</id>
   <author>
     <name><![CDATA[Kyle Thielk]]></name>
@@ -12,6 +12,31 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Wordpress to Octopress]]></title>
+    <link href="http://kylethielk.github.io/blog/wordpress-to-octopress/"/>
+    <updated>2014-05-22T09:30:13-05:00</updated>
+    <id>http://kylethielk.github.io/blog/wordpress-to-octopress</id>
+    <content type="html"><![CDATA[<p>Self hosting wordpress is no fun. Even without any plugins installed there is a constant stream of security updates to worry about. Every plugin you do use is a huge gaping security hole waiting to happen. With each and every wordpress update theres a 50/50 chance it will break your theme and/or plugins. Ever tried updating a theme that you made custom changes to?</p>
+
+<p>Using a hosted platform like wordpress.com or WPEngine.com relieves you of most of this burden, but there are still the <a href="http://www.cvedetails.com/vulnerability-list/vendor_id-2337/product_id-4096/Wordpress-Wordpress.html">security exploits</a> constantly being found. It also costs an arm and a leg for a humble personal blog.</p>
+
+<p><img src="media/images/VPS-Security-Reminder.png" title="My weekly reminder to update VPS and Wordpress Security" alt="My weekly reminder to update VPS and Wordpress Security" /></p>
+
+<p><a href="http://octopress.org">Octopress</a> with free hosting on <a href="https://www.github.com">Github</a> is one of the better options. Hosting on Github gives you the benefit of their reliability and CDN (not to mention its free!). Using Octopress means a completely (almost) static site thats easy to maintain and quick to load.</p>
+
+<p>Starting an octopress blog from scratch is dead simple. <a href="http://octopress.org/docs/">Follow the directions here</a>. Converting from Wordpress is a little bit tricky, but still manageable. Use <a href="https://github.com/thomasf/exitwp">ExitWP</a> to convert your posts to markdown. If you have comments convert them to Disqus and they should seamlessly transfer if the URL stays the same.</p>
+
+<p>Following these two guides as well as Octopress' own documenation I was able to do the entire transfer in an afternoon.</p>
+
+<p><a href="http://zhen.org/blog/migrating-40000-posts-from-wordpress-to-octopress/">Migrating 40,000 Posts from Wordpress to Octopress</a></p>
+
+<p><a href="http://blog.pixelingene.com/2011/09/switching-to-the-octopress-blogging-engine/">Switching to the Octopress Blogging Engine</a></p>
+
+<p>Good luck!</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Move BitBucket Repository to Github]]></title>
@@ -193,17 +218,6 @@
 </span><span class='line'>
 </span><span class='line'>&lt;p&gt;
 </span></code></pre></td></tr></table></div></figure></notextile></div></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Android Studio Unit Testing Setup]]></title>
-    <link href="http://kylethielk.github.io/blog/android-studio-unit-testing-setup/"/>
-    <updated>2014-03-18T11:38:37-05:00</updated>
-    <id>http://kylethielk.github.io/blog/android-studio-unit-testing-setup</id>
-    <content type="html"><![CDATA[<p>I am surprised that there is not official documentation to get a simple &ldquo;Hello, world!&rdquo;-esque unit test setup running in Android Studio.</p>
-
-<p>Fortunately I stumbled on this dead simple guide for running your first unit test in Android Studio: <a href="http://nikolaj.hesselholtskov.dk/2013/10/how-to-add-unit-tests-to-android-studio.html">http://nikolaj.hesselholtskov.dk/2013/10/how-to-add-unit-tests-to-android-studio.html</a></p>
 ]]></content>
   </entry>
   

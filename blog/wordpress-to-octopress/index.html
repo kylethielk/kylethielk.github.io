@@ -5,11 +5,11 @@
 	<script data-cfasync="false" type="text/javascript" src="//use.typekit.net/axj3cfp.js"></script>
 	<script data-cfasync="false" type="text/javascript">try{Typekit.load();}catch(e){}</script>
 	<meta charset="utf-8">
-	<title>Build iOS App with Jenkins: Code Signing Issues.  | Kyle Thielk</title>
+	<title>Wordpress to Octopress  | Kyle Thielk</title>
 
 <meta name="author" content="Kyle Thielk"> 
 
-<meta name="description" content="Building an iOS application in xCode is easy. It automatically handles all of your certificates and provisioning profiles. Sure it can be finicky at &hellip;"> <meta name="keywords" content="">
+<meta name="description" content="Self hosting wordpress is no fun. Even without any plugins installed there is a constant stream of security updates to worry about. Every plugin you &hellip;"> <meta name="keywords" content="">
 
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -100,66 +100,24 @@ $(document).ready(
 </header>
 
 	<div id="content" class="inner"><article class="post">
-	<h2 class="title">Build iOS App With Jenkins: Code Signing Issues.</h2>
-	<div class="entry-content"><p>Building an iOS application in xCode is easy. It automatically handles all of your certificates and provisioning profiles. Sure it can be finicky at times, but for the most part it just works.</p>
+	<h2 class="title">Wordpress to Octopress</h2>
+	<div class="entry-content"><p>Self hosting wordpress is no fun. Even without any plugins installed there is a constant stream of security updates to worry about. Every plugin you do use is a huge gaping security hole waiting to happen. With each and every wordpress update theres a 50/50 chance it will break your theme and/or plugins. Ever tried updating a theme that you made custom changes to?</p>
 
-<p>Automatically building your application (i.e with Jenkins) is not so easy. You have to ensure that your private key, certificate and provisioning profile are configured and available. Recently I found out that this is easier said than done.</p>
+<p>Using a hosted platform like wordpress.com or WPEngine.com relieves you of most of this burden, but there are still the <a href="http://www.cvedetails.com/vulnerability-list/vendor_id-2337/product_id-4096/Wordpress-Wordpress.html">security exploits</a> constantly being found. It also costs an arm and a leg for a humble personal blog.</p>
 
-<p><strong>Ensure your provisioning profile is available</strong></p>
+<p><img src="media/images/VPS-Security-Reminder.png" title="My weekly reminder to update VPS and Wordpress Security" alt="My weekly reminder to update VPS and Wordpress Security" /></p>
 
-<p>This one is easy. Simply download your provisioning profile from the Developer Center to the build machine and double click it (make sure you are logged in as the user that will be used for your automated builds). xCode will automatically add it to your list of available provisioning profiles. You can see a list of all of your provisioning profiles by browsing to:</p>
+<p><a href="http://octopress.org">Octopress</a> with free hosting on <a href="https://www.github.com">Github</a> is one of the better options. Hosting on Github gives you the benefit of their reliability and CDN (not to mention its free!). Using Octopress means a completely (almost) static site thats easy to maintain and quick to load.</p>
 
-<p><em>~/Library/MobileDevice/Provisioning\ Profiles/</em></p>
+<p>Starting an octopress blog from scratch is dead simple. <a href="http://octopress.org/docs/">Follow the directions here</a>. Converting from Wordpress is a little bit tricky, but still manageable. Use <a href="https://github.com/thomasf/exitwp">ExitWP</a> to convert your posts to markdown. If you have comments convert them to Disqus and they should seamlessly transfer if the URL stays the same.</p>
 
-<p><strong>Add your Certificate and Private Key</strong></p>
+<p>Following these two guides as well as Octopress&#8217; own documenation I was able to do the entire transfer in an afternoon.</p>
 
-<p>This is the tricky part. On your development machine you are more than likely running as an administrator (whereas on your build machine the &lsquo;build user&rsquo; should not be). Simply adding your certificate and key file to the System/Login Keychain and just expecting them to work&hellip;.well it won&rsquo;t work. The solution is to create a new keychain, add your certificate/key here and tell your build to use this new keychain. <em>Note: the creation of a new keychain is not 100% necessary, but I prefer it. Once you start building multiple projects on one machine it helps keep things organized.</em></p>
+<p><a href="http://zhen.org/blog/migrating-40000-posts-from-wordpress-to-octopress/">Migrating 40,000 Posts from Wordpress to Octopress</a></p>
 
-<p>The following is the pseudo code of what I use. First create new keychain:</p>
+<p><a href="http://blog.pixelingene.com/2011/09/switching-to-the-octopress-blogging-engine/">Switching to the Octopress Blogging Engine</a></p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c">#Create keychain</span>
-</span><span class='line'>security create-keychain -p &lt;i&gt;YourPassword&lt;/i&gt; NewKeychain.keychain
-</span><span class='line'>
-</span><span class='line'><span class="c">#Import Cert/Key - The -A flag is what allows non-interactive use of cert</span>
-</span><span class='line'>security import /path/to/my.cert -t cert -k NewKeychain.keychain -A
-</span><span class='line'>security import /path/to/private.p12 -t agg -k NewKeychain.keychain -A
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>The build script can then be adjusted as so:</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c">#Load keychain, and unlock it</span>
-</span><span class='line'>security list-keychain -s <span class="s2">&quot;/var/lib/jenkins/Library/Keychains/NewKeychain.keychain&quot;</span>
-</span><span class='line'>security default-keychain -s <span class="s2">&quot;/var/lib/jenkins/Library/Keychains/NewKeychain.keychain&quot;</span>
-</span><span class='line'>security unlock-keychain -p <span class="s2">&quot;YourPassword&quot;</span> <span class="s2">&quot;/var/lib/jenkins/Library/Keychains/NewKeychain.keychain&quot;</span>
-</span><span class='line'>
-</span><span class='line'>&lt;Run Build&gt;
-</span><span class='line'>
-</span><span class='line'>
-</span><span class='line'><span class="c">#Reset to login keychain</span>
-</span><span class='line'>security list-keychain -s <span class="s2">&quot;/var/lib/jenkins/Library/Keychains/login.keychain&quot;</span>
-</span><span class='line'>security default-keychain -s <span class="s2">&quot;/var/lib/jenkins/Library/Keychains/login.keychain&quot;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
+<p>Good luck!</p>
 </div>
 
 
@@ -176,7 +134,7 @@ $(document).ready(
   
 
 
-<time datetime="2014-03-21T08:14:14-05:00" pubdate data-updated="true">Mar 21<span>st</span>, 2014</time></span>
+<time datetime="2014-05-22T09:30:13-05:00" pubdate data-updated="true">May 22<span>nd</span>, 2014</time></span>
 	
 
 <span class="tags">
@@ -236,8 +194,8 @@ Powered by Octopress.
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://kylethielk.github.io/blog/build-ios-app-with-jenkins-code-signing-issues/';
-        var disqus_url = 'http://kylethielk.github.io/blog/build-ios-app-with-jenkins-code-signing-issues/';
+        var disqus_identifier = 'http://kylethielk.github.io/blog/wordpress-to-octopress/';
+        var disqus_url = 'http://kylethielk.github.io/blog/wordpress-to-octopress/';
         var disqus_script = 'embed.js';
       
     (function () {

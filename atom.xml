@@ -4,7 +4,7 @@
   <title><![CDATA[Kyle Thielk]]></title>
   <link href="http://kylethielk.github.io/atom.xml" rel="self"/>
   <link href="http://kylethielk.github.io/"/>
-  <updated>2014-05-22T09:29:40-05:00</updated>
+  <updated>2014-05-22T11:38:51-05:00</updated>
   <id>http://kylethielk.github.io/</id>
   <author>
     <name><![CDATA[Kyle Thielk]]></name>
@@ -12,6 +12,31 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Wordpress to Octopress]]></title>
+    <link href="http://kylethielk.github.io/blog/wordpress-to-octopress/"/>
+    <updated>2014-05-22T09:30:13-05:00</updated>
+    <id>http://kylethielk.github.io/blog/wordpress-to-octopress</id>
+    <content type="html"><![CDATA[<p>Self hosting wordpress is no fun. Even without any plugins installed there is a constant stream of security updates to worry about. Every plugin you do use is a huge gaping security hole waiting to happen. With each and every wordpress update theres a 50/50 chance it will break your theme and/or plugins. Ever tried updating a theme that you made custom changes to?</p>
+
+<p>Using a hosted platform like wordpress.com or WPEngine.com relieves you of most of this burden, but there are still the <a href="http://www.cvedetails.com/vulnerability-list/vendor_id-2337/product_id-4096/Wordpress-Wordpress.html">security exploits</a> constantly being found. It also costs an arm and a leg for a humble personal blog.</p>
+
+<p><img src="media/images/VPS-Security-Reminder.png" title="My weekly reminder to update VPS and Wordpress Security" alt="My weekly reminder to update VPS and Wordpress Security" /></p>
+
+<p><a href="http://octopress.org">Octopress</a> with free hosting on <a href="https://www.github.com">Github</a> is one of the better options. Hosting on Github gives you the benefit of their reliability and CDN (not to mention its free!). Using Octopress means a completely (almost) static site thats easy to maintain and quick to load.</p>
+
+<p>Starting an octopress blog from scratch is dead simple. <a href="http://octopress.org/docs/">Follow the directions here</a>. Converting from Wordpress is a little bit tricky, but still manageable. Use <a href="https://github.com/thomasf/exitwp">ExitWP</a> to convert your posts to markdown. If you have comments convert them to Disqus and they should seamlessly transfer if the URL stays the same.</p>
+
+<p>Following these two guides as well as Octopress&#8217; own documenation I was able to do the entire transfer in an afternoon.</p>
+
+<p><a href="http://zhen.org/blog/migrating-40000-posts-from-wordpress-to-octopress/">Migrating 40,000 Posts from Wordpress to Octopress</a></p>
+
+<p><a href="http://blog.pixelingene.com/2011/09/switching-to-the-octopress-blogging-engine/">Switching to the Octopress Blogging Engine</a></p>
+
+<p>Good luck!</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Move BitBucket Repository to Github]]></title>
@@ -1016,38 +1041,6 @@ Publisher: &ldquo;What? We can&rsquo;t sell a 15 page pamphlet for $19.99. Fluff
 <p>The story is fantastic. It flows very well and is enjoyable the whole time. In fact I found myself wishing it was longer. I can understand why it is a book people read multiple times, I already want to read it again.</p>
 
 <p>Definitely in my top 5 fiction books (granted that list is barely over 5, but I don&rsquo;t see it dropping out either).</p>
-
-<p><em>Note: This post is part of my <a href="http://www.kylethielk.com/blog/26-books-in-26-weeks/">26 Books in 26 Weeks Goal</a>.</em></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Outliers, Thought-Provoking Storytelling.]]></title>
-    <link href="http://kylethielk.github.io/blog/outliers-thought-provoking-storytelling/"/>
-    <updated>2013-10-12T21:14:34-05:00</updated>
-    <id>http://kylethielk.github.io/blog/outliers-thought-provoking-storytelling</id>
-    <content type="html"><![CDATA[<p><img src="http://kylethielk.github.io/media/images/outliers_cover.jpg" title="Outliers Book Cover" alt="Outliers Book Cover" /></p>
-
-<p>Read: September 20 – 25th, 2013</p>
-
-<p><a href="http://www.amazon.com/Outliers-Story-Success-Malcolm-Gladwell/dp/0316017930">Direct Amazon Link</a></p>
-
-<p>Malcolm Gladwell is a fantastic writer and story teller. I imagine this is why his books sell so well and he has so many fans. I read Outliers in just a few days, granted it is a short book but I was also on a beach in the Philippines and I frequently had to remind myself of this fact so I didn&rsquo;t spend too much time in the room reading.</p>
-
-<p>I was going to give the book a 5 star rating. I bought into Outliers hook line and sinker. The book basically argues that the general consensus the public and the media has of highly successful people (especially those that came form a less than favorable background) clawing and fighting themselves to the top through sheer determination and genius alone is a fallacy. Gladwell sets out to &lsquo;prove&rsquo; that it is in fact determination and hard work coupled with very fortunate circumstances and a lot of help from other people. The premise is very thought provoking and presents many case studies (read: South Korean Airlines) that are fascinating.</p>
-
-<p>As a quick example Gladwell points out that in the world of Canadian Hockey, a large percentage of the elite players were born in the same few months. As children this meant they were older than their peers in the same leagues and thus more developed and larger. This small advantage when younger is quickly magnified as the better players receive more training and attention. This ties into Gladwell&rsquo;s 10,000 hour theory then; since the players receive more training and attention, they reach the 10,000 hour mark much quicker and thus become the &lsquo;elite&rsquo; players. The elite players are the elite because of one small advantage as a child that creates a snowball effect throughout their life.</p>
-
-<p>I was a little behind with this book summary, I&rsquo;m writing it a few weeks after finishing the book. The other day I completely by chance stumbled upon an article by Paul Raeburn on MIT&rsquo;s Science Journal: <a href="http://ksj.mit.edu/tracker/2013/10/should-we-stop-believing-malcolm-gladwel">Should we stop believing Malcolm Gladwell</a> and this follow-up: <a href="http://ksj.mit.edu/tracker/2013/10/malcolm-gladwell-speaks-can-narrative-be">Malcolm Gladwell speaks: Can narrative be misused in journalism?</a></p>
-
-<blockquote>&#8220;I am a story-teller, and I look to academic research … for ways of augmenting story-telling. &#8230;we’re obsessed with things like coherence, consistency, neatness of argument. Readers are indifferent to those things.&#8221; -Malcolm Gladwell
-
-&#8220;All writing about social science need not be presented with the formality and precision of the academic world. There is a place for storytelling, in all of its messiness.&#8221; -Malcolm Gladwell</blockquote>
-
-
-<p>Gladwell absolutely presents his work in Outliers as fact, as well-researched and verified fact (which I assume he does in his other books as well). These comments from Gladwell himself seem to directly contradict this. They leave me feeling slightly betrayed. Gladwell&rsquo;s <a href="http://www.slate.com/articles/health_and_science/science/2013/10/malcolm_gladwell_s_david_and_goliath_he_explains_why_christopher_chabris.html">response to these criticisms</a> does absolutely nothing to disprove his critics and simply tells them to &ldquo;calm down&rdquo;.</p>
-
-<p>Outliers must be taken as a story, a very good story. Do not take it as well researched journalism or fact even if it is presented that way and you will be much better for it.</p>
 
 <p><em>Note: This post is part of my <a href="http://www.kylethielk.com/blog/26-books-in-26-weeks/">26 Books in 26 Weeks Goal</a>.</em></p>
 ]]></content>
