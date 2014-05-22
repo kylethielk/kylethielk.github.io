@@ -9,7 +9,16 @@
 
 <meta name="author" content="Kyle Thielk"> 
 
-<meta name="description" content="Using the Android NDK is well documented throughout the internet if you are still using Eclipse. The process is basically the same with Android &hellip;"> <meta name="keywords" content="">
+<meta name="description" content="Alternatively titled &ldquo;Move Remote Git repository to a new Host&rdquo;. These instructions apply for any remote git hosts. 1
+2
+3
+4
+5
+6
+7
+8
+9
+10 &hellip;"> <meta name="keywords" content="">
 
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -102,6 +111,69 @@ $(document).ready(
 </header>
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/move-bitbucket-repository-to-github/">
+		
+			Move BitBucket Repository to Github</a>
+	</h2>
+	<div class="entry-content">
+		<p>Alternatively titled &ldquo;Move Remote Git repository to a new Host&rdquo;. These instructions apply for any remote git hosts.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c">#What remotes am I currently configured for?</span>
+</span><span class='line'>git remote -v
+</span><span class='line'>
+</span><span class='line'><span class="c">#Remove these remotes</span>
+</span><span class='line'>git remote rm origin
+</span><span class='line'>
+</span><span class='line'><span class="c">#Set up new remote</span>
+</span><span class='line'>git remote add origin https://github.com/kylethielk/DailyOje.git
+</span><span class='line'>
+</span><span class='line'><span class="c">#Push existing history to new remote</span>
+</span><span class='line'>git push -u origin master
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><em>Sidenote: Referring to services like Github as &lsquo;remote hosts&rsquo; is disingenuous since git is decentralized. All repositories are treated equal and our daily git routine is simply keeping all of them in sync. Referring to them in this manner can help clarify which copy we are referring to.</em></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<span class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-05-22T09:10:55-05:00" pubdate data-updated="true">May 22<span>nd</span>, 2014</time></span>
+	
+
+
+	
+</div></article>
 
 
     <article class="post">
@@ -997,86 +1069,6 @@ right number: the value it stores.</p>
 <span class="tags">
 
 	<a class='category' href='/blog/categories/travel/'>Travel</a>
-
-</span>
-
-
-	
-</div></article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/naturally-kenya/">
-		
-			Naturally, Kenya</a>
-	</h2>
-	<div class="entry-content">
-		<p><img src="/media/images/kenya-featured.jpg" title="Kenya Tea Field Header" alt="" /></p>
-
-<p><img src="/media/images/buffalo-flamingos-nakuru.jpg" title="Buffalo among the flamingos in Nakuru Park." alt="Buffalo among the flamingos in Nakuru Park." /></p>
-
-<p><img src="/media/images/cheeky-baboon.jpg" title="Cheeky Baboon stealing from the litter bin." alt="Cheeky Baboon stealing from the litter bin." /></p>
-
-<p><img src="/media/images/chicks-at-sunrise.jpg" title="Chicks at sunset." alt="Chicks at sunset." /></p>
-
-<p><img src="/media/images/flooded-nakuru-park.jpg" title="Nakuru park becomes more and more flooded each year." alt="Nakuru park becomes more and more flooded each year." /></p>
-
-<p><img src="/media/images/flooded-road-nakuru.jpg" title="What once was a road in Nakuru National Park." alt="What once was a road in Nakuru National Park." /></p>
-
-<p><img src="/media/images/giraffe-nakuru.jpg" title="Giraffe on the move. Nakuru National Park." alt="Giraffe on the move. Nakuru National Park." /></p>
-
-<p><img src="/media/images/just-playing-around.jpg" title="Cyclist in training." alt="Cyclist in training." /></p>
-
-<p><img src="/media/images/local-children-kenya.jpg" title="Local children in Lwalla." alt="Local children in Lwalla." /></p>
-
-<p><img src="/media/images/lwalla-countryside.jpg" title="Taking in Lwalla's countryside." alt="Taking in Lwalla's countryside." /></p>
-
-<p><img src="/media/images/momma-cow-and-baby.jpg" title="There is a ton of livestock." alt="There is a ton of livestock." /></p>
-
-<p><img src="/media/images/no-graffiti-hells-gate.jpg" title="Woops. Graffiti in Hell's Gate." alt="Woops. Graffiti in Hell's Gate." /></p>
-
-<p><img src="/media/images/fallen-tree-riverbed-hells-.jpg" title="Fallen tree in a dried riverbed, Hell's Gate." alt="Fallen tree in a dried riverbed, Hell's Gate." /></p>
-
-<p><img src="/media/images/obama-lollipop.jpg" title="Obama Lollipop. They love him and everyone claims to be related to him." alt="Obama Lollipop. They love him and everyone claims to be related to him." /></p>
-
-<p><img src="/media/images/rock-hyrax.jpg" title="A Rock Hyrax in Hell's Gate." alt="A Rock Hyrax in Hell's Gate." /></p>
-
-<p><img src="/media/images/warthog-nakuru.jpg" title="Warthog. Nakuru National Park." alt="Warthog. Nakuru National Park." /></p>
-
-<p><img src="/media/images/zebra-hells-gate.jpg" title="Zebra in Hell's Gate." alt="Zebra in Hell's Gate." /></p>
-
-<p><img src="/media/images/baby-lamb-kenya.jpg" title="A baby lamb and his momma." alt="A baby lamb and his momma." /></p>
-
-<p><img src="/media/images/biking-hells-gate.jpg" title="Biking through Hells Gate." alt="Biking through Hells Gate." /></p>
-
-<p><img src="/media/images/blood-water.jpg" title="Blood: Water Mission" alt="Blood: Water Mission" /></p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<span class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-12-08T19:45:46-06:00" pubdate data-updated="true">Dec 8<span>th</span>, 2013</time></span>
-	
-
-<span class="tags">
-
-	<a class='category' href='/blog/categories/general/'>General</a>, <a class='category' href='/blog/categories/travel/'>Travel</a>
 
 </span>
 
