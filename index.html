@@ -9,7 +9,7 @@
 
 <meta name="author" content="Kyle Thielk"> 
 
-<meta name="description" content="Self hosting wordpress is no fun. Even without any plugins installed there is a constant stream of security updates to worry about. Every plugin you &hellip;"> <meta name="keywords" content="">
+<meta name="description" content="I&rsquo;ve open sourced one of my side projects, DailyOJE(Online Journal Entry). It was something I threw together quickly as a proof of concept as &hellip;"> <meta name="keywords" content="">
 
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -100,6 +100,58 @@ $(document).ready(
 </header>
 
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/dailyoje-made-open-source/">
+		
+			DailyOje Made Open Source</a>
+	</h2>
+	<div class="entry-content">
+		<p>I&rsquo;ve open sourced one of my side projects, DailyOJE(Online Journal Entry). It was something I threw together quickly as a proof of concept as well as a testbed for Twitter OAuth integration.</p>
+
+<p>Its a simple tool designed to eliminate all distractions when writing.</p>
+
+<p><a href="https://www.github.com/kylethielk/DailyOje">You can find it on Github</a>.</p>
+
+<p><img src="/media/images/DailyOje-Screenshot-homepage.png" title="The Homepage" alt="The Homepage" /></p>
+
+<p><img src="/media/images/DailyOje-Screenshot-login.png" title="The Login Screen with Twitter OAuth&quot;" alt="The Login Screen with Twitter OAuth" /></p>
+
+<p><img src="/media/images/DailyOje-Screenshot-sample.png" title="Sample Entry" alt="Sample Entry" /></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<span class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-05-22T14:30:13-05:00" pubdate data-updated="true">May 22<span>nd</span>, 2014</time></span>
+	
+
+<span class="tags">
+
+	<a class='category' href='/blog/categories/projects/'>Projects</a>
+
+</span>
+
+
+	
+</div></article>
 
 
     <article class="post">
@@ -810,199 +862,6 @@ Quicken Customer Care</p>
 <span class="tags">
 
 	<a class='category' href='/blog/categories/general/'>General</a>
-
-</span>
-
-
-	
-</div></article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/pointers-in-objective-c/">
-		
-			Pointers in Objective-C</a>
-	</h2>
-	<div class="entry-content">
-		<p>Objective-C is a strict superset of C. That means every feature of C is alive and kicking in Objective-C, pointers included. Five years of pointer free programming has made me&hellip;rusty. As the saying goes, &ldquo;There is no better way to learn than to teach&rdquo;.</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class='objective-c'><span class='line'><span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">//Your standard variable</span>
-</span><span class='line'><span class="kt">int</span> <span class="o">*</span><span class="n">b</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">a</span><span class="p">;</span> <span class="c1">//An integer pointer</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1">//Prints &quot;The value of a is 2&quot;</span>
-</span><span class='line'><span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;The value of a is %i.&quot;</span><span class="p">,</span><span class="n">a</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">*</span><span class="n">b</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1">//Prints &quot;The value of a is 3&quot;</span>
-</span><span class='line'><span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;The value of a is %i&quot;</span><span class="p">,</span><span class="n">a</span><span class="p">);</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>This is your standard pointer example. <em>int *b</em> is an integer pointer that we are assigning the address of <em>int a</em>. The asterisk <em>*</em> is generally called the <em>dereferencing</em> or <em>indirection</em> operator and means &ldquo;Give me the value stored at the address this pointer points to&rdquo;. The <em>&amp;</em> operator means &ldquo;Give me the address in memory that this variable is stored at&rdquo;.</p>
-
-<p>What can often be confusing is that with one line declaration and initialization short-hand, the asterisk is not performing any dereferencing but is actually simply declaring that this is an integer pointer.</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='objective-c'><span class='line'><span class="kt">int</span> <span class="o">*</span><span class="n">b</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">a</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1">//..is the same as </span>
-</span><span class='line'>
-</span><span class='line'><span class="kt">int</span> <span class="o">*</span><span class="n">b</span><span class="p">;</span>
-</span><span class='line'><span class="n">b</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">a</span><span class="p">;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>This snippet of code illustrates how this actually works in memory.</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='objective-c'><span class='line'><span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
-</span><span class='line'><span class="kt">int</span> <span class="o">*</span><span class="n">b</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">a</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;%p -&gt; %i&quot;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">a</span><span class="p">,</span> <span class="n">a</span><span class="p">);</span>
-</span><span class='line'><span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;%p -&gt; %p&quot;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">b</span><span class="p">,</span> <span class="n">b</span><span class="p">);</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>The output:</p>
-
-<pre><code>&lt;em&gt;0x7fff5fbff88c -&gt; 2
-0x7fff5fbff880 -&gt; 0x7fff5fbff88c&lt;/em&gt;
-</code></pre>
-
-<p>left number: the variables location in memory.
-right number: the value it stores.</p>
-
-<p>Remember a pointer is like any other variable, it has its own location in memory but its value is simply another memory address. So when you write &ldquo;*b&rdquo; you are saying &ldquo;Give me the value (2) stored at the address (0x7fff5fbff88c).</p>
-
-<h2>Pointers to Pointers</h2>
-
-<p>With pointers to pointers things get a little more complicated. A pointer can actually point to another pointer. Take the following code.</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='objective-c'><span class='line'><span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
-</span><span class='line'><span class="kt">int</span> <span class="o">*</span><span class="n">b</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">a</span><span class="p">;</span>
-</span><span class='line'><span class="kt">int</span> <span class="o">**</span><span class="n">c</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">b</span><span class="p">;</span> <span class="c1">//A pointer to a pointer</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;%p -&gt; %i&quot;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">a</span><span class="p">,</span> <span class="n">a</span><span class="p">);</span>
-</span><span class='line'><span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;%p -&gt; %p&quot;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">b</span><span class="p">,</span> <span class="n">b</span><span class="p">);</span>
-</span><span class='line'><span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;%p -&gt; %p&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">c</span><span class="p">,</span> <span class="n">c</span><span class="p">);</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>The output:</p>
-
-<pre><code>&lt;em&gt;0x7fff5fbff88c -&gt; 2
-0x7fff5fbff880 -&gt; 0x7fff5fbff88c
-0x7fff5fbff878 -&gt; 0x7fff5fbff880&lt;/em&gt;
-</code></pre>
-
-<p><em>int **c</em> points to <em>int *b</em> which in turn points to <em>int a</em>. To further illustrate the following examples show how we can reference the same thing in multiple ways.</p>
-
-<p>a == <em>b == **c; //The value 2
-&a; == b == </em>c; //The address of a or 0x7fff5fbff88c</p>
-
-<p>Pointers to pointers have practical uses in Objective-C when a method actually needs to return multiple values.</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='objective-c'><span class='line'><span class="k">-</span> <span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span> <span class="nf">printNumber:</span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="nv">number</span> <span class="nf">error:</span><span class="p">(</span><span class="n">NSError</span> <span class="o">**</span><span class="p">)</span><span class="nv">errorPtr</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">NSError</span> <span class="o">*</span><span class="n">anyError</span><span class="p">;</span>
-</span><span class='line'><span class="p">[</span><span class="n">myClass</span> <span class="nl">printNumber:</span><span class="o">&amp;</span><span class="n">anyError</span><span class="p">]</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p><em>printNumber</em> in this case can return a BOOL with the standard return statement <strong><em>and</em></strong> an optional error by setting our <em>*anyError</em> pointer to a new NSError object.</p>
-
-<p>For example a sample implementation of printNumber:</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-</pre></td><td class='code'><pre><code class='objective-c'><span class='line'><span class="k">-</span> <span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span> <span class="nf">printNumber:</span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="nv">number</span> <span class="nf">error:</span><span class="p">(</span><span class="n">NSError</span> <span class="o">**</span><span class="p">)</span><span class="nv">errorPtr</span>
-</span><span class='line'><span class="p">{</span>
-</span><span class='line'>    <span class="k">if</span><span class="p">(</span><span class="n">number</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
-</span><span class='line'>    <span class="p">{</span>
-</span><span class='line'>        <span class="n">NSError</span> <span class="o">*</span><span class="n">newError</span> <span class="o">=</span> <span class="p">[</span><span class="n">MyErrorFactory</span> <span class="nl">newErrorWithDesc:</span><span class="s">@&quot;Negative numbers are not allowed&quot;</span><span class="p">];</span>
-</span><span class='line'>        <span class="o">*</span><span class="n">errorPtr</span> <span class="o">=</span> <span class="n">newError</span><span class="p">;</span>
-</span><span class='line'>        <span class="k">return</span> <span class="n">NO</span><span class="p">;</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'>    <span class="k">else</span>
-</span><span class='line'>    <span class="p">{</span>
-</span><span class='line'>        <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Your number is %i&quot;</span><span class="p">,</span><span class="n">number</span><span class="p">);</span>
-</span><span class='line'>        <span class="k">return</span> <span class="n">YES</span><span class="p">;</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<span class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-12-14T08:08:40-06:00" pubdate data-updated="true">Dec 14<span>th</span>, 2013</time></span>
-	
-
-<span class="tags">
-
-	<a class='category' href='/blog/categories/tech/'>Tech</a>
 
 </span>
 

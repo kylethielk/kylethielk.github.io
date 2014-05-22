@@ -4,7 +4,7 @@
   <title><![CDATA[Kyle Thielk]]></title>
   <link href="http://kylethielk.github.io/atom.xml" rel="self"/>
   <link href="http://kylethielk.github.io/"/>
-  <updated>2014-05-22T11:40:06-05:00</updated>
+  <updated>2014-05-22T14:39:46-05:00</updated>
   <id>http://kylethielk.github.io/</id>
   <author>
     <name><![CDATA[Kyle Thielk]]></name>
@@ -12,6 +12,25 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[DailyOje Made Open Source]]></title>
+    <link href="http://kylethielk.github.io/blog/dailyoje-made-open-source/"/>
+    <updated>2014-05-22T14:30:13-05:00</updated>
+    <id>http://kylethielk.github.io/blog/dailyoje-made-open-source</id>
+    <content type="html"><![CDATA[<p>I&rsquo;ve open sourced one of my side projects, DailyOJE(Online Journal Entry). It was something I threw together quickly as a proof of concept as well as a testbed for Twitter OAuth integration.</p>
+
+<p>Its a simple tool designed to eliminate all distractions when writing.</p>
+
+<p><a href="https://www.github.com/kylethielk/DailyOje">You can find it on Github</a>.</p>
+
+<p><img src="http://kylethielk.github.io/media/images/DailyOje-Screenshot-homepage.png" title="The Homepage" alt="The Homepage" /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/DailyOje-Screenshot-login.png" title="The Login Screen with Twitter OAuth&quot;" alt="The Login Screen with Twitter OAuth" /></p>
+
+<p><img src="http://kylethielk.github.io/media/images/DailyOje-Screenshot-sample.png" title="Sample Entry" alt="Sample Entry" /></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Wordpress to Octopress]]></title>
@@ -1018,31 +1037,6 @@ Publisher: &ldquo;What? We can&rsquo;t sell a 15 page pamphlet for $19.99. Fluff
 <p>Seriously read this <a href="http://en.wikibooks.org/wiki/Seven_Habits_Study_Guide/Quick_overview_of_the_seven_habits">WikiBooks&#8217;&lsquo; summary</a>, and save yourself the time and money. Update: Even better read this <a href="http://www.forbes.com/sites/ericjackson/2012/07/24/the-only-thing-you-need-to-remember-about-the-seven-habits-of-highly-effective-people/">Forbes&#8217; Summary</a>.</p>
 
 <p><em>Note: This post is part of my</em> <a href="http://www.kylethielk.com/blog/26-books-in-26-weeks/">26 Books in 26 Weeks Goal</a>.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Enders Game, Excellent.]]></title>
-    <link href="http://kylethielk.github.io/blog/enders-game-excellent/"/>
-    <updated>2013-10-20T10:56:46-05:00</updated>
-    <id>http://kylethielk.github.io/blog/enders-game-excellent</id>
-    <content type="html"><![CDATA[<p><img src="http://kylethielk.github.io/media/images/enders-game-cover.jpg" title="Enders Game Cover.." alt="Enders Game Cover." /></p>
-
-<p>Date Read: September 20 &ndash; 25th, 2013</p>
-
-<p><a href="http://www.amazon.com/Enders-Game-The-Ender-Quintet-ebook/dp/B003G4W49C">Direct Amazon Link</a></p>
-
-<p>After hearing such good things about Ender&rsquo;s Game I was afraid my expectations were set too high and I would be disappointed. My general distaste for science fiction healthily balanced out the high expectations though and I ended up thoroughly enjoying it.</p>
-
-<p>What I like about Ender&rsquo;s Game is that the science fiction complements the story and the characters, not the other way around. The story and character development comes first, science fiction is simply there to help.</p>
-
-<p>The children in Ender&rsquo;s game are young but their opinions and thoughts are of that of someone much older. For me this was less believable than the science fiction. Adding five years to all of the characters would not minimize the effect nor would it detract from the point but would lend itself to a more credible premise. This is my one complaint.</p>
-
-<p>The story is fantastic. It flows very well and is enjoyable the whole time. In fact I found myself wishing it was longer. I can understand why it is a book people read multiple times, I already want to read it again.</p>
-
-<p>Definitely in my top 5 fiction books (granted that list is barely over 5, but I don&rsquo;t see it dropping out either).</p>
-
-<p><em>Note: This post is part of my <a href="http://www.kylethielk.com/blog/26-books-in-26-weeks/">26 Books in 26 Weeks Goal</a>.</em></p>
 ]]></content>
   </entry>
   

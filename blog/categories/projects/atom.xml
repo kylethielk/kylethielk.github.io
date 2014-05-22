@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Projects | Kyle Thielk]]></title>
   <link href="http://kylethielk.github.io/blog/categories/projects/atom.xml" rel="self"/>
   <link href="http://kylethielk.github.io/"/>
-  <updated>2014-05-22T11:40:06-05:00</updated>
+  <updated>2014-05-22T14:39:46-05:00</updated>
   <id>http://kylethielk.github.io/</id>
   <author>
     <name><![CDATA[Kyle Thielk]]></name>
@@ -12,6 +12,25 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[DailyOje Made Open Source]]></title>
+    <link href="http://kylethielk.github.io/blog/dailyoje-made-open-source/"/>
+    <updated>2014-05-22T14:30:13-05:00</updated>
+    <id>http://kylethielk.github.io/blog/dailyoje-made-open-source</id>
+    <content type="html"><![CDATA[<p>I&rsquo;ve open sourced one of my side projects, DailyOJE(Online Journal Entry). It was something I threw together quickly as a proof of concept as well as a testbed for Twitter OAuth integration.</p>
+
+<p>Its a simple tool designed to eliminate all distractions when writing.</p>
+
+<p><a href="https://www.github.com/kylethielk/DailyOje">You can find it on Github</a>.</p>
+
+<p><img src="/media/images/DailyOje-Screenshot-homepage.png" title="The Homepage" alt="The Homepage" /></p>
+
+<p><img src="/media/images/DailyOje-Screenshot-login.png" title="The Login Screen with Twitter OAuth&quot;" alt="The Login Screen with Twitter OAuth" /></p>
+
+<p><img src="/media/images/DailyOje-Screenshot-sample.png" title="Sample Entry" alt="Sample Entry" /></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Not Too Manly To Keep A Journal.]]></title>
@@ -128,141 +147,6 @@
 </span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <p>Good luck!</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Javascript Namespaces & First Open Source Project]]></title>
-    <link href="http://kylethielk.github.io/blog/javascript-namespaces-first-open-source-project/"/>
-    <updated>2013-01-11T15:21:10-06:00</updated>
-    <id>http://kylethielk.github.io/blog/javascript-namespaces-first-open-source-project</id>
-    <content type="html"><![CDATA[<p>Direct Link to Github: <a href="https://github.com/kylethielk/js-namespace">js-namespace</a></p>
-
-<p>One of the first issues any reasonable size javascript projects encounters is proper &lsquo;modularization&rsquo; of code.  This becomes especially critical when you are</p>
-
-<ul>
-<li><p>Working on a multi-person team.</p></li>
-<li><p>Using many third party libraries.</p></li>
-</ul>
-
-
-<p>The global namespace quickly becomes polluted and the chances of a collision become higher. The solution for this issue is menial in most programming languages. In Java there are packages, C# has namespaces, python has namespaces etc&hellip; Javascript has no out of the box language support for a similar concept. There are literally hundreds of different implementations available online. Searching for &lsquo;Javascript Namespaces&rsquo; on any search engine will yield plenty of options.</p>
-
-<p>The basic approach works but is tedious and requires that all parts of the &lsquo;namespace&rsquo; be predefined:</p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">Company</span> <span class="o">=</span> <span class="p">{};</span>
-</span><span class='line'><span class="nx">Company</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="o">&amp;</span><span class="nx">ldquo</span><span class="p">;</span><span class="nx">Widget</span> <span class="nx">Company</span><span class="o">&amp;</span><span class="nx">rdquo</span><span class="p">;;</span>
-</span><span class='line'><span class="nx">Company</span><span class="p">.</span><span class="nx">greeting</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span>
-</span><span class='line'><span class="p">{</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">pre</span><span class="o">&gt;&lt;</span><span class="nx">code</span><span class="o">&gt;</span><span class="k">return</span> <span class="s2">&quot;Hello, we are&quot;</span> <span class="o">+</span> <span class="nx">foo</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
-</span><span class='line'><span class="o">&lt;</span><span class="err">/code&gt;&lt;/pre&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<p>For example to create the namespace &ldquo;Company.Organization.TeamA.Product.Core&rdquo; one could:</p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">Company</span> <span class="o">=</span> <span class="p">{};</span>
-</span><span class='line'><span class="nx">Company</span><span class="p">.</span><span class="nx">Organization</span> <span class="o">=</span> <span class="p">{};</span>
-</span><span class='line'><span class="nx">Company</span><span class="p">.</span><span class="nx">Organization</span><span class="p">.</span><span class="nx">TeamA</span> <span class="o">=</span> <span class="p">{};</span>
-</span><span class='line'><span class="c1">//&amp;hellip;and so on</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<p>If you later decide you want to add Company.Organization.TeamB you have to be extra careful not to override your existing declarations:</p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">Company</span> <span class="o">=</span> <span class="nx">Company</span> <span class="o">||</span> <span class="p">{};</span>
-</span><span class='line'><span class="nx">Company</span><span class="p">.</span><span class="nx">Organization</span> <span class="o">=</span> <span class="nx">Company</span><span class="p">.</span><span class="nx">Organization</span> <span class="o">||</span> <span class="p">{};</span>
-</span><span class='line'><span class="nx">Company</span><span class="p">.</span><span class="nx">Organization</span><span class="p">.</span><span class="nx">TeamB</span> <span class="o">=</span> <span class="nx">Company</span><span class="p">.</span><span class="nx">Organization</span><span class="p">.</span><span class="nx">TeamB</span> <span class="o">||</span> <span class="p">{};</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<p>After exploring (and using) many of the different solutions available online I decided to write my own. Its simple, easy to use and is <strong>my first open source project&hellip;.ever</strong>! I am of course <a href="http://www.codinghorror.com/blog/2009/02/dont-reinvent-the-wheel-unless-you-plan-on-learning-more-about-wheels.html">re-inventing the wheel</a> but I wanted to something simple to start my open source journey with.</p>
-
-<p>It is available under the MIT license and the source can be found on github under <a href="https://github.com/kylethielk/js-namespace">js-namespace</a>. Its usage is simple.</p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="o">&lt;</span><span class="err">/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">JsNamespace</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">ldquo</span><span class="p">;</span><span class="nx">Company</span><span class="p">.</span><span class="nx">Organization</span><span class="p">.</span><span class="nx">TeamA</span><span class="p">.</span><span class="nx">Product</span><span class="p">.</span><span class="nx">Core</span><span class="o">&amp;</span><span class="nx">rdquo</span><span class="p">;).</span><span class="nx">MyClass</span> <span class="o">=</span> <span class="p">{};</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<p>All namespaces and their immediate children will also have a &lsquo;className&rsquo; defined. I&rsquo;ve found this to be invaluable when logging.</p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="o">&lt;</span><span class="err">/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">JsNamespace</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">ldquo</span><span class="p">;</span><span class="nx">Company</span><span class="p">.</span><span class="nx">Organization</span><span class="p">.</span><span class="nx">TeamA</span><span class="p">.</span><span class="nx">Product</span><span class="p">.</span><span class="nx">Core</span><span class="o">&amp;</span><span class="nx">rdquo</span><span class="p">;).</span><span class="nx">MyClass</span> <span class="o">=</span>
-</span><span class='line'><span class="p">{</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">pre</span><span class="o">&gt;&lt;</span><span class="nx">code</span><span class="o">&gt;</span><span class="nx">myFunction</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span>
-</span><span class='line'><span class="p">{</span>
-</span><span class='line'>    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">className</span> <span class="o">+</span> <span class="s2">&quot;: A log message&quot;</span><span class="p">);</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'><span class="o">&lt;</span><span class="err">/code&gt;&lt;/pre&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="p">};</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span>
-</span><span class='line'><span class="p">{</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">pre</span><span class="o">&gt;&lt;</span><span class="nx">code</span><span class="o">&gt;</span><span class="nx">JsNamespace</span><span class="p">.</span><span class="nx">buildClassNames</span><span class="p">();</span>
-</span><span class='line'>
-</span><span class='line'><span class="nx">Company</span><span class="p">.</span><span class="nx">Organization</span><span class="p">.</span><span class="nx">TeamA</span><span class="p">.</span><span class="nx">Product</span><span class="p">.</span><span class="nx">Core</span><span class="p">.</span><span class="nx">MyClass</span><span class="p">.</span><span class="nx">myFunction</span><span class="p">();</span>
-</span><span class='line'><span class="o">&lt;</span><span class="err">/code&gt;&lt;/pre&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="p">});</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<p>Looks like my <a href="http://www.kylethielk.com/blog/open-source-projects-and-github-as-a-resume/">public accountability</a> is off to a good start.</p>
-
-<p><img src="/media/images/js-namespace.gif" title="JS Namespace" alt="JS Namespace" /></p>
 ]]></content>
   </entry>
   
