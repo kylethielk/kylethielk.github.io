@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Publicly Accountable Goals | Kyle Thielk]]></title>
+  <link href="http://kylethielk.github.io/blog/categories/publicly-accountable-goals/atom.xml" rel="self"/>
+  <link href="http://kylethielk.github.io/"/>
+  <updated>2014-06-30T14:27:21-05:00</updated>
+  <id>http://kylethielk.github.io/</id>
+  <author>
+    <name><![CDATA[Kyle Thielk]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Open Source Projects and Github as a Resume]]></title>
+    <link href="http://kylethielk.github.io/blog/open-source-projects-and-github-as-a-resume/"/>
+    <updated>2013-01-04T14:43:54-06:00</updated>
+    <id>http://kylethielk.github.io/blog/open-source-projects-and-github-as-a-resume</id>
+    <content type="html"><![CDATA[<p><img src="/media/images/github-profile-screen.png" title="Github Repository Screenshot" alt="Github Repository Screenshot" /></p>
+
+<p>One of the primary functions for this blog is <a href="http://www.kylethielk.com/blog/accountability/">accountability</a>. So here it is today, my first publicly accountable goal: <strong>Start contributing to and starting my own open source projects. </strong></p>
+
+<p>Between time spent at the day job and my personal projects (that are not open) I have not previously contributed to a single open source project, or even considered it. This attitude has been selfish and harmful to myself at the same time. I use numerous open source projects daily without so much as a thank you to their contributors. I use <a href="https://github.com/twitter/bootstrap">Bootstrap</a>, <a href="http://jquery.com/">jQuery</a>, <a href="http://www.videolan.org/vlc/index.html">VLC</a>, <a href="http://wordpress.org/">Wordpress</a>, <a href="http://notepad-plus-plus.org/">Notepad++</a>, <a href="http://www.linux.org/">Linux </a>and many, many more daily. It is time I start contributing  instead of just taking. By contributing I will now be benefiting both the community that has provided so much for me as well as myself in the process.</p>
+
+<p>The more forward thinking companies are now requiring your github account as part of your resume and for good reason. I thoroughly believe that a candidate&rsquo;s credentials for a programming job are more convincing when backed by historical code that anyone can examine and critique. Anyone who has ever hired will tell you that you cannot form a realistic opinion of an employee&rsquo;s skillset with a 4 hour interview. Real world work does not come in 4 hour spurts. Whats important is an employees performance on projects that last 6, 12, 18 months.</p>
+
+<p><a href="http://www.github.com">Github </a>is the perfect vehicle to demonstrate and sell your skillset. There are other but it is by far the most popular and widely used.  I use it daily for the day job so I am familiar with it. I have finally created my own personal <a href="https://github.com/kylethielk">GitHub Account</a>.</p>
+
+<p>To start with I plan on getting my feet wet by contributing to smaller yet more active projects. From what I&rsquo;ve read and heard, the larger projects are very unlikely to accept changes from unknown developers (me being one of those). Once comfortable and I have a few successful pull requests under my belt I can start with my own projects.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[The Importance of Goals]]></title>
+    <link href="http://kylethielk.github.io/blog/the-importance-of-goals/"/>
+    <updated>2012-12-30T15:54:08-06:00</updated>
+    <id>http://kylethielk.github.io/blog/the-importance-of-goals</id>
+    <content type="html"><![CDATA[<p>The times that I find myself most likely to be distracted (read: not to doing what really matters) are directly related to the times when I have not clearly defined my goals.</p>
+
+<p>Goals give me a sense of purpose and clearly set out what I need to achieve. Not having goals makes it easier to reason with myself that opening a new tab for Reddit for 5 minutes won&rsquo;t matter. The problem is those 5 minutes turn into 45 minutes. 45 minutes of pure focused work is a lot to waste.</p>
+
+<p>I try to start each day going over my goals for the day. I&rsquo;ve found that just looking at and thinking about my goals for five minutes each day before starting any work (that includes checking your emails in bed still half asleep) is a great way to come out of the gate strong. It doesn&rsquo;t leave any room for CNN, Hacker News or any other distractions you&rsquo;ve convinced yourself are actually worthwhile.</p>
+
+<p>I generally have three sets of goals (which I maintain with <a href="http://www.trello.com">trello</a>, a list for each set and a board with these three lists for each product I&rsquo;m working on).</p>
+
+<ol>
+<li><p> Short Term Goals &ndash; Generally 1-2 day and are probably more attune to tasks.</p></li>
+<li><p> Medium Term Goals &ndash; Generally 2 weeks in the future</p></li>
+<li><p> Long Term Goals &ndash; Anything longer than 2 weeks.</p></li>
+</ol>
+
+
+<p>The categories are intentionally vague. The real benefit comes from simply writing down your goals. Personally I&rsquo;ve found that placing strict restrictions on your goals almost never works. I know whats really important and what needs attention first, I don&rsquo;t need to write it down. I just need to write down the actual goals.</p>
+
+<p>Setting goals is of utmost importance when you are working in a somewhat independent environment, whether that be as a freelancer or consultant or entrepreneur. In a normal 9-5 job your goals are generally set by those paid more than you.  In that case you and your bosses know exactly what you need to achieve and you are accountable to them. It is important to set goals and it is important to be held accountable to them. Even if that means telling your spouse/girlfriend/boyfriend/sister. Make yourself accountable to someone or something. For some people being held accountable to themselves is enough.</p>
+
+<p>(Note the screenshot is an actual trello board I am using for a project I&rsquo;m working on)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Accountability]]></title>
+    <link href="http://kylethielk.github.io/blog/accountability/"/>
+    <updated>2012-12-08T12:28:17-06:00</updated>
+    <id>http://kylethielk.github.io/blog/accountability</id>
+    <content type="html"><![CDATA[<p>With the number of blogs increasing exponentially every year one has to ask, why another? I&rsquo;ve tried blogging once before and could only keep it going for three months. At the time it was a novelty and once that wore off there was no real motivation to keep it going.</p>
+
+<!-- more -->
+
+
+<p>My first and only attempt was over four years ago. I&rsquo;ve entertained the idea of starting a personal blog a few times since then but <strong>it was a fleeting fantasy</strong>.</p>
+
+<p>People blog for the thrill of writing, to share their personal life, for profit, to avoid boredom, introspection and any other number of reasons. This time I&rsquo;m blogging for <strong>accountability</strong>.</p>
+
+<h5><em>Settings goals is easy. Accountability to those goals is difficult. </em></h5>
+
+<p>This blog is my accountability to specific goals both professionally and personally. For me, public accountability is a significantly stronger motivator than private accountability. Its easy to shrug off and forget about goals no one else knows about.</p>
+
+<p>This post and the goals it describes are intentionally vague. I will detail my goals with what I hope is extreme transparency in the very near future. There are quite a few goals that still need to be defined and a few that are not appropriate for public consumption yet.</p>
+
+<p>This is a personal experiment and is definitely me stepping out of my comfort zone. Lets begin.</p>
+]]></content>
+  </entry>
+  
+</feed>

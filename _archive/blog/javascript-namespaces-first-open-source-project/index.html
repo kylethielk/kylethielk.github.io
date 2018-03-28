@@ -1,0 +1,308 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<script data-cfasync="false" type="text/javascript" src="//use.typekit.net/axj3cfp.js"></script>
+	<script data-cfasync="false" type="text/javascript">try{Typekit.load();}catch(e){}</script>
+	<meta charset="utf-8">
+	<title>Javascript Namespaces & First Open Source Project  | Kyle Thielk</title>
+
+<meta name="author" content="Kyle Thielk"> 
+
+<meta name="description" content="Direct Link to Github: js-namespace One of the first issues any reasonable size javascript projects encounters is proper &lsquo;modularization&rsquo &hellip;"> <meta name="keywords" content="">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="Kyle Thielk" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="/stylesheets/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script type="text/javascript" src="/javascripts/jquery.fancybox.pack.js"></script>
+
+<script language="Javascript" type="text/javascript">
+$(document).ready(
+  function() {
+    (function($) {
+      $(".fancybox[data-content-id]").each(function() {
+        this.href = $(this).data('content-id');
+      });
+      $(".fancybox").fancybox({
+        beforeLoad: function() {
+          var el, 
+              id = $(this.element).data('title-id');
+
+          if (id) {
+            el = $('#' + id);
+
+            if (el.length) {
+              this.title = el.html();
+            }
+          }
+          if ($(this).data('content')) {
+            this.content = $(this).data('content');
+          }
+        },
+        helpers: {
+          title: {
+            type: 'inside'
+          }
+        }
+      });
+    })(jQuery);
+  }
+);
+</script>
+
+	
+</head>
+
+
+
+<body>
+	<header id="header" class="inner"><div class="wrap">
+	<a class="site-logo" href="http://www.kylethielk.com/blog/" title="Kyle Thielk" rel="home">
+	                <img src="http://gravatar.com/avatar/89c3806c84626af0b8a57f9b1f6358c6/?s=120&amp;d=retro" width="120" height="120" alt="" class="no-grav header-image">
+	            </a>
+	<h1><a href="/">Kyle Thielk</a></h1>
+	<h4>Personal Blog</h4>
+</div>
+<nav id="main-nav" ><ul>
+	<li><a href="/">Blog</a></li>
+	<li><a href="https://www.pulsur.io"><span style="color: #56C3FF">Pulsur</span>.io</a></li>
+	<li><a href="/about">About</a></li>
+	<li><a href="/archives">Archive</a></li>
+</ul>
+</nav>
+<nav id="mobile-nav" >
+	<div class="alignleft menu">
+		<a class="button">Menu</a>
+		<div class="container"><ul>
+	<li><a href="/">Blog</a></li>
+	<li><a href="https://www.pulsur.io"><span style="color: #56C3FF">Pulsur</span>.io</a></li>
+	<li><a href="/about">About</a></li>
+	<li><a href="/archives">Archive</a></li>
+</ul>
+</div>
+	</div>
+	<div class="alignright search">
+		<a class="button"></a>
+		<div class="container">
+			<form action="https://www.google.com/search" method="get">
+				<input type="text" name="q" results="0">
+				<input type="hidden" name="q" value="site:kylethielk.github.io">
+			</form>
+		</div>
+	</div>
+</nav>
+
+
+</header>
+
+	<div id="content" class="inner"><article class="post">
+	<h2 class="title">Javascript Namespaces & First Open Source Project</h2>
+	<div class="entry-content"><p>Direct Link to Github: <a href="https://github.com/kylethielk/js-namespace">js-namespace</a></p>
+
+<p>One of the first issues any reasonable size javascript projects encounters is proper &lsquo;modularization&rsquo; of code.  This becomes especially critical when you are</p>
+
+<ul>
+<li><p>Working on a multi-person team.</p></li>
+<li><p>Using many third party libraries.</p></li>
+</ul>
+
+
+<p>The global namespace quickly becomes polluted and the chances of a collision become higher. The solution for this issue is menial in most programming languages. In Java there are packages, C# has namespaces, python has namespaces etc&hellip; Javascript has no out of the box language support for a similar concept. There are literally hundreds of different implementations available online. Searching for &lsquo;Javascript Namespaces&rsquo; on any search engine will yield plenty of options.</p>
+
+<p>The basic approach works but is tedious and requires that all parts of the &lsquo;namespace&rsquo; be predefined:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">Company</span> <span class="o">=</span> <span class="p">{};</span>
+</span><span class='line'><span class="nx">Company</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="s2">&quot;Widget Company&quot;</span><span class="p">;</span>
+</span><span class='line'><span class="nx">Company</span><span class="p">.</span><span class="nx">greeting</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="k">return</span> <span class="s2">&quot;Hello, we are&quot;</span> <span class="o">+</span> <span class="nx">foo</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>For example to create the namespace &ldquo;Company.Organization.TeamA.Product.Core&rdquo; one could:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">Company</span> <span class="o">=</span> <span class="p">{};</span>
+</span><span class='line'><span class="nx">Company</span><span class="p">.</span><span class="nx">Organization</span> <span class="o">=</span> <span class="p">{};</span>
+</span><span class='line'><span class="nx">Company</span><span class="p">.</span><span class="nx">Organization</span><span class="p">.</span><span class="nx">TeamA</span> <span class="o">=</span> <span class="p">{};</span>
+</span><span class='line'><span class="c1">//...and so on</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>If you later decide you want to add Company.Organization.TeamB you have to be extra careful not to override your existing declarations:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">Company</span> <span class="o">=</span> <span class="nx">Company</span> <span class="o">||</span> <span class="p">{};</span>
+</span><span class='line'><span class="nx">Company</span><span class="p">.</span><span class="nx">Organization</span> <span class="o">=</span> <span class="nx">Company</span><span class="p">.</span><span class="nx">Organization</span> <span class="o">||</span> <span class="p">{};</span>
+</span><span class='line'><span class="nx">Company</span><span class="p">.</span><span class="nx">Organization</span><span class="p">.</span><span class="nx">TeamB</span> <span class="o">=</span> <span class="nx">Company</span><span class="p">.</span><span class="nx">Organization</span><span class="p">.</span><span class="nx">TeamB</span> <span class="o">||</span> <span class="p">{};</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>After exploring (and using) many of the different solutions available online I decided to write my own. Its simple, easy to use and is <strong>my first open source project&hellip;.ever</strong>! I am of course <a href="http://www.codinghorror.com/blog/2009/02/dont-reinvent-the-wheel-unless-you-plan-on-learning-more-about-wheels.html">re-inventing the wheel</a> but I wanted to something simple to start my open source journey with.</p>
+
+<p>It is available under the MIT license and the source can be found on github under <a href="https://github.com/kylethielk/js-namespace">js-namespace</a>. Its usage is simple.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">JsNamespace</span><span class="p">(</span><span class="s2">&quot;Company.Organization.TeamA.Product.Core&quot;</span><span class="p">).</span><span class="nx">MyClass</span> <span class="o">=</span> <span class="p">{};</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>All namespaces and their immediate children will also have a &lsquo;className&rsquo; defined. I&rsquo;ve found this to be invaluable when logging.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">JsNamespace</span><span class="p">(</span><span class="s2">&quot;Company.Organization.TeamA.Product.Core&quot;</span><span class="p">).</span><span class="nx">MyClass</span> <span class="o">=</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="nx">myFunction</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">className</span> <span class="o">+</span> <span class="s2">&quot;: A log message&quot;</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="nx">JsNamespace</span><span class="p">.</span><span class="nx">buildClassNames</span><span class="p">();</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">Company</span><span class="p">.</span><span class="nx">Organization</span><span class="p">.</span><span class="nx">TeamA</span><span class="p">.</span><span class="nx">Product</span><span class="p">.</span><span class="nx">Core</span><span class="p">.</span><span class="nx">MyClass</span><span class="p">.</span><span class="nx">myFunction</span><span class="p">();</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Looks like my <a href="http://www.kylethielk.com/blog/open-source-projects-and-github-as-a-resume/">public accountability</a> is off to a good start.</p>
+
+<p><img src="/media/images/js-namespace.gif" title="JS Namespace" alt="JS Namespace" /></p>
+</div>
+
+
+<div class="meta">
+	<span class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-01-11T15:21:10-06:00" pubdate data-updated="true">Jan 11<span>th</span>, 2013</time></span>
+	
+
+<span class="tags">
+
+	<a class='category' href='/blog/categories/projects/'>Projects</a>
+
+</span>
+
+
+	
+</div></article>
+
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	
+	
+<!---	<a class="addthis_counter addthis_pill_style"></a> --->
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+
+
+<section id="comment">
+    <h2 class="title">Comments</h2>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</section>
+</div>
+	<footer id="footer" class="inner">	<div class="social-menu">
+	        <a href="http://feeds.feedburner.com/BitOfNothing" target="_blank"><img src="/media/images/rss.png" border="0"></a>
+	        <a href="http://www.twitter.com/kylethielk" target="_blank"><img src="/media/images/twitter.png" border="0"></a>
+	        <a href="https://www.github.com/kylethielk" target="_blank"><img src="/media/images/github.png" border="0"></a>
+	        <a href="http://www.linkedin.com/pub/kyle-thielk/19/213/103" target="_blank"><img src="/media/images/linkedin.png" border="0"></a>
+	        <a href="https://plus.google.com/115173139610601264088" target="_blank"><img src="/media/images/google.png" border="0"></a>
+	    </div>
+Copyright &copy; 2014
+
+    Kyle Thielk
+
+<br>
+Powered by Octopress.
+
+</footer>
+	<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+<script type="text/javascript">
+      var disqus_shortname = 'kylethielk';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://kylethielk.github.io/blog/javascript-namespaces-first-open-source-project/';
+        var disqus_url = 'http://kylethielk.github.io/blog/javascript-namespaces-first-open-source-project/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-36830678-1']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+
+
+
+</body>
+</html>

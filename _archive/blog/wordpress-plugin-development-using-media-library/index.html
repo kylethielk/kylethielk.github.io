@@ -1,0 +1,262 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<script data-cfasync="false" type="text/javascript" src="//use.typekit.net/axj3cfp.js"></script>
+	<script data-cfasync="false" type="text/javascript">try{Typekit.load();}catch(e){}</script>
+	<meta charset="utf-8">
+	<title>Wordpress Plugin Development: Using Media Library  | Kyle Thielk</title>
+
+<meta name="author" content="Kyle Thielk"> 
+
+<meta name="description" content="When porting  jquery-refolio over to wordpress one of the things I wanted to do was tie into wordpress&#8217; Media Library. This makes it extremely &hellip;"> <meta name="keywords" content="">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="Kyle Thielk" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="/stylesheets/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script type="text/javascript" src="/javascripts/jquery.fancybox.pack.js"></script>
+
+<script language="Javascript" type="text/javascript">
+$(document).ready(
+  function() {
+    (function($) {
+      $(".fancybox[data-content-id]").each(function() {
+        this.href = $(this).data('content-id');
+      });
+      $(".fancybox").fancybox({
+        beforeLoad: function() {
+          var el, 
+              id = $(this.element).data('title-id');
+
+          if (id) {
+            el = $('#' + id);
+
+            if (el.length) {
+              this.title = el.html();
+            }
+          }
+          if ($(this).data('content')) {
+            this.content = $(this).data('content');
+          }
+        },
+        helpers: {
+          title: {
+            type: 'inside'
+          }
+        }
+      });
+    })(jQuery);
+  }
+);
+</script>
+
+	
+</head>
+
+
+
+<body>
+	<header id="header" class="inner"><div class="wrap">
+	<a class="site-logo" href="http://www.kylethielk.com/blog/" title="Kyle Thielk" rel="home">
+	                <img src="http://gravatar.com/avatar/89c3806c84626af0b8a57f9b1f6358c6/?s=120&amp;d=retro" width="120" height="120" alt="" class="no-grav header-image">
+	            </a>
+	<h1><a href="/">Kyle Thielk</a></h1>
+	<h4>Personal Blog</h4>
+</div>
+<nav id="main-nav" ><ul>
+	<li><a href="/">Blog</a></li>
+	<li><a href="https://www.pulsur.io"><span style="color: #56C3FF">Pulsur</span>.io</a></li>
+	<li><a href="/about">About</a></li>
+	<li><a href="/archives">Archive</a></li>
+</ul>
+</nav>
+<nav id="mobile-nav" >
+	<div class="alignleft menu">
+		<a class="button">Menu</a>
+		<div class="container"><ul>
+	<li><a href="/">Blog</a></li>
+	<li><a href="https://www.pulsur.io"><span style="color: #56C3FF">Pulsur</span>.io</a></li>
+	<li><a href="/about">About</a></li>
+	<li><a href="/archives">Archive</a></li>
+</ul>
+</div>
+	</div>
+	<div class="alignright search">
+		<a class="button"></a>
+		<div class="container">
+			<form action="https://www.google.com/search" method="get">
+				<input type="text" name="q" results="0">
+				<input type="hidden" name="q" value="site:kylethielk.github.io">
+			</form>
+		</div>
+	</div>
+</nav>
+
+
+</header>
+
+	<div id="content" class="inner"><article class="post">
+	<h2 class="title">Wordpress Plugin Development: Using Media Library</h2>
+	<div class="entry-content"><p>When porting <a href="https://github.com/kylethielk/jquery-refolio"> jquery-refolio</a> over to wordpress one of the things I wanted to do was tie into wordpress&#8217; Media Library. This makes it extremely easy to re-use images already in wordpress and it would mean I didn&rsquo;t have to <a href="http://www.codinghorror.com/blog/2009/02/dont-reinvent-the-wheel-unless-you-plan-on-learning-more-about-wheels.html">re-invent the wheel</a>. Shockingly enough I couldn&rsquo;t find it documented anywhere in Wordpress&#8217; officials documentation and even a few quick googles came up empty.</p>
+
+<p>I eventually stumbled upon the answer and I was suprised at how easy it was. Hopefully this will help someone in the future trying to do the same thing.</p>
+
+<p>To launch the media manager from javascript:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'>   <span class="c1">//launch media library popup</span>
+</span><span class='line'>   <span class="nx">tb_show</span><span class="p">(</span><span class="s1">&#39;Choose Portfolio Image&#39;</span><span class="p">,</span> <span class="s1">&#39;media-upload.php?type=image&amp;TB_iframe=true&#39;</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>You must then register a callback as such (the name is important and must be registered in the global namespace):</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="cm">/**</span>
+</span><span class='line'><span class="cm">* @param html Will be passed the html for the selected image.</span>
+</span><span class='line'><span class="cm">*/</span>
+</span><span class='line'><span class="nb">window</span><span class="p">.</span><span class="nx">send_to_editor</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">html</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>   <span class="kd">var</span> <span class="nx">imageUrl</span> <span class="o">=</span> <span class="nx">jQuery</span><span class="p">(</span><span class="s1">&#39;img&#39;</span><span class="p">,</span> <span class="nx">html</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;src&#39;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>   <span class="c1">//Hide media library popup.</span>
+</span><span class='line'>   <span class="nx">tb_remove</span><span class="p">();</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">};</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The callback will be invoked when the user has selected an image to insert. Here is a sample HTML snippet passed back to the callback function:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;http://www.kylethielk.com/blog/?attachment_id=971&quot;</span> <span class="na">rel=</span><span class="s">&quot;attachment wp-att-971&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">&quot;http://www.kylethielk.com/blog/wp-content/uploads/2013/02/big-image2.jpg&quot;</span> <span class="na">alt=</span><span class="s">&quot;&quot;</span> <span class="na">width=</span><span class="s">&quot;484&quot;</span> <span class="na">height=</span><span class="s">&quot;317&quot;</span> <span class="na">class=</span><span class="s">&quot;alignnone size-full wp-image-971&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;/a&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Good luck!</p>
+</div>
+
+
+<div class="meta">
+	<span class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-02-15T11:58:33-06:00" pubdate data-updated="true">Feb 15<span>th</span>, 2013</time></span>
+	
+
+<span class="tags">
+
+	<a class='category' href='/blog/categories/projects/'>Projects</a>
+
+</span>
+
+
+	
+</div></article>
+
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	
+	
+<!---	<a class="addthis_counter addthis_pill_style"></a> --->
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+
+
+<section id="comment">
+    <h2 class="title">Comments</h2>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</section>
+</div>
+	<footer id="footer" class="inner">	<div class="social-menu">
+	        <a href="http://feeds.feedburner.com/BitOfNothing" target="_blank"><img src="/media/images/rss.png" border="0"></a>
+	        <a href="http://www.twitter.com/kylethielk" target="_blank"><img src="/media/images/twitter.png" border="0"></a>
+	        <a href="https://www.github.com/kylethielk" target="_blank"><img src="/media/images/github.png" border="0"></a>
+	        <a href="http://www.linkedin.com/pub/kyle-thielk/19/213/103" target="_blank"><img src="/media/images/linkedin.png" border="0"></a>
+	        <a href="https://plus.google.com/115173139610601264088" target="_blank"><img src="/media/images/google.png" border="0"></a>
+	    </div>
+Copyright &copy; 2014
+
+    Kyle Thielk
+
+<br>
+Powered by Octopress.
+
+</footer>
+	<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+<script type="text/javascript">
+      var disqus_shortname = 'kylethielk';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://kylethielk.github.io/blog/wordpress-plugin-development-using-media-library/';
+        var disqus_url = 'http://kylethielk.github.io/blog/wordpress-plugin-development-using-media-library/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-36830678-1']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+
+
+
+</body>
+</html>

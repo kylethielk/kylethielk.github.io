@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Projects | Kyle Thielk]]></title>
+  <link href="http://kylethielk.github.io/blog/categories/projects/atom.xml" rel="self"/>
+  <link href="http://kylethielk.github.io/"/>
+  <updated>2014-06-30T14:27:21-05:00</updated>
+  <id>http://kylethielk.github.io/</id>
+  <author>
+    <name><![CDATA[Kyle Thielk]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[DailyOje Made Open Source]]></title>
+    <link href="http://kylethielk.github.io/blog/dailyoje-made-open-source/"/>
+    <updated>2014-05-22T14:30:13-05:00</updated>
+    <id>http://kylethielk.github.io/blog/dailyoje-made-open-source</id>
+    <content type="html"><![CDATA[<p>I&rsquo;ve open sourced one of my side projects, DailyOJE(Online Journal Entry). It was something I threw together quickly as a proof of concept as well as a testbed for Twitter OAuth integration.</p>
+
+<p>Its a simple tool designed to eliminate all distractions when writing.</p>
+
+<p><a href="https://www.github.com/kylethielk/DailyOje">You can find it on Github</a>.</p>
+
+<p><img src="/media/images/DailyOje-Screenshot-homepage.png" title="The Homepage" alt="The Homepage" /></p>
+
+<p><img src="/media/images/DailyOje-Screenshot-login.png" title="The Login Screen with Twitter OAuth&quot;" alt="The Login Screen with Twitter OAuth" /></p>
+
+<p><img src="/media/images/DailyOje-Screenshot-sample.png" title="Sample Entry" alt="Sample Entry" /></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Not Too Manly To Keep A Journal.]]></title>
+    <link href="http://kylethielk.github.io/blog/not-too-manly-to-keep-a-journal/"/>
+    <updated>2013-07-10T06:57:14-05:00</updated>
+    <id>http://kylethielk.github.io/blog/not-too-manly-to-keep-a-journal</id>
+    <content type="html"><![CDATA[<p>Writing on a daily basis (often referred to as &ldquo;Keeping a Journal&rdquo;) has been a goal of mine for a while. I have always been mediocre at best and never really enjoyed it. More than likely its due to the fact that most of my writing comprised of late nights cramming in a paper that I should have started a week earlier on a topic I had little interest in (like Celtic Architecture).</p>
+
+<p>Then I started writing just to write. To put my thoughts down on paper, not to persuade a boss, or get a good grade. I actually started to enjoy it and immediately noticing the <a href="http://www.ducttapemarketing.com/blog/2013/05/20/benefits-of-writing/">benefits</a> <a href="http://zenhabits.net/write-daily/">many</a> <a href="http://lyndaryoung.blogspot.com/2012/09/6-benefits-of-writing-every-day.html">people</a> <a href="http://www.myrkothum.com/the-benefits-of-writing-a-personal-journal/">have</a> <a href="http://www.wordstrumpet.com/2010/01/the-benefits-of-writing-daily.html">written</a> <a href="http://michaelhyatt.com/daily-journal.html">about</a> <a href="http://www.utexas.edu/features/archive/2005/writing.html">before</a>.</p>
+
+<p>Now the first thing I do in the morning is spend 10-15 minutes just writing.  I&rsquo;ve found it puts me in the frame of mind to be productive. Try it for yourself. Instead of checking email, Facebook, or Twitter simply write your thoughts down. Generally I try to reflect on what I achieved yesterday (and what I could have done better), what I want to achieve today and anything else that happens to be on my mind at the time.</p>
+
+<p>Naturally being a developer and unable to find the perfect way to write daily, I created my own tool that suits my needs perfectly. <a href="http://www.dailyoje.com">DailyOJE is a distraction free way to write daily.</a></p>
+
+<p>I hope that someone else finds it as useful as I do.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Twitter-FindToFollow Update]]></title>
+    <link href="http://kylethielk.github.io/blog/twitter-findtofollow-update/"/>
+    <updated>2013-06-03T01:50:29-05:00</updated>
+    <id>http://kylethielk.github.io/blog/twitter-findtofollow-update</id>
+    <content type="html"><![CDATA[<p>My recently released Open Source Twitter tool <a href="https://github.com/kylethielk/twitter-findtofollow/">FindToFollow</a> has received some much needed updates and can now be used to automatically follow users that have been filtered. The follows occur successively with a randomly generated interval (with a set minimum and maximum) between each follow.</p>
+
+<p>On the roadmap:</p>
+
+<ol>
+<li><p> Filter currently followed users based on a set of criteria so that we can unfollow them automatically for example: &ldquo;Unfollow all users who have not followed me back in less than three days since I&rsquo;ve followed them&rdquo;. Similar to what ManageFlitter provides. We however will have more information as we know when users were followed and unfollowed, information ManageFlitter does not have.</p></li>
+<li><p> Statistics about daily/weekly/monthly follower and friend counts.</p></li>
+</ol>
+
+
+<p><img src="/media/images/twitter-findtofollow-screenshot.png" title="Twitter FindToFollow main filter screen." alt="Automatically filter potential twitter users." /></p>
+
+<p><img src="/media/images/twitter-findtofollow-screenshot-2.png" title="FindToFollow automatically follow selected users." alt="FindToFollow automatically follow selected users." /></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Twitter: FindToFollow]]></title>
+    <link href="http://kylethielk.github.io/blog/twitter-findtofollow/"/>
+    <updated>2013-05-20T22:53:47-05:00</updated>
+    <id>http://kylethielk.github.io/blog/twitter-findtofollow</id>
+    <content type="html"><![CDATA[<p>I have open sourced a tool I wrote to find potential followers on Twitter by allowing you to apply certain filtering criteria against a certain user&rsquo;s list of followers.</p>
+
+<p>I recently undertook a pseudo-experiment to find the best way to grow my following on Twitter (later post to follow with results) and realized that I could easily automate a lot of what I was doing manually. This project is the result of that.</p>
+
+<p>The tool is call <a href="https://github.com/kylethielk/twitter-findtofollow">twitter-findtofollow</a> and is released under the MIT License. Click the link for more detailed instructions about how it works and how to use it.</p>
+
+<p><img src="/media/images/twiter-findtofollow.png" title="Twitter-FindToFollow Screenshot" alt="Twitter-FindToFollow Screenshot" /></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Wordpress Plugin Development: Using Media Library]]></title>
+    <link href="http://kylethielk.github.io/blog/wordpress-plugin-development-using-media-library/"/>
+    <updated>2013-02-15T11:58:33-06:00</updated>
+    <id>http://kylethielk.github.io/blog/wordpress-plugin-development-using-media-library</id>
+    <content type="html"><![CDATA[<p>When porting <a href="https://github.com/kylethielk/jquery-refolio"> jquery-refolio</a> over to wordpress one of the things I wanted to do was tie into wordpress' Media Library. This makes it extremely easy to re-use images already in wordpress and it would mean I didn&rsquo;t have to <a href="http://www.codinghorror.com/blog/2009/02/dont-reinvent-the-wheel-unless-you-plan-on-learning-more-about-wheels.html">re-invent the wheel</a>. Shockingly enough I couldn&rsquo;t find it documented anywhere in Wordpress' officials documentation and even a few quick googles came up empty.</p>
+
+<p>I eventually stumbled upon the answer and I was suprised at how easy it was. Hopefully this will help someone in the future trying to do the same thing.</p>
+
+<p>To launch the media manager from javascript:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'>   <span class="c1">//launch media library popup</span>
+</span><span class='line'>   <span class="nx">tb_show</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">lsquo</span><span class="p">;</span><span class="nx">Choose</span> <span class="nx">Portfolio</span> <span class="nx">Image</span><span class="o">&amp;</span><span class="nx">rsquo</span><span class="p">;,</span> <span class="o">&amp;</span><span class="nx">lsquo</span><span class="p">;</span><span class="nx">media</span><span class="o">-</span><span class="nx">upload</span><span class="p">.</span><span class="nx">php</span><span class="o">?</span><span class="nx">type</span><span class="o">=</span><span class="nx">image</span><span class="o">&amp;</span><span class="nx">amp</span><span class="p">;</span><span class="nx">TB_iframe</span><span class="o">=</span><span class="kc">true</span><span class="o">&amp;</span><span class="nx">rsquo</span><span class="p">;);</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>You must then register a callback as such (the name is important and must be registered in the global namespace):</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="err">/&lt;em&gt;*</span>
+</span><span class='line'><span class="o">*</span> <span class="err">@</span><span class="nx">param</span> <span class="nx">html</span> <span class="nx">Will</span> <span class="nx">be</span> <span class="nx">passed</span> <span class="nx">the</span> <span class="nx">html</span> <span class="k">for</span> <span class="nx">the</span> <span class="nx">selected</span> <span class="nx">image</span><span class="p">.</span>
+</span><span class='line'><span class="o">&lt;</span><span class="sr">/em&gt;/</span>
+</span><span class='line'><span class="nb">window</span><span class="p">.</span><span class="nx">send_to_editor</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">html</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>   <span class="kd">var</span> <span class="nx">imageUrl</span> <span class="o">=</span> <span class="nx">jQuery</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">lsquo</span><span class="p">;</span><span class="nx">img</span><span class="o">&amp;</span><span class="nx">rsquo</span><span class="p">;,</span> <span class="nx">html</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">lsquo</span><span class="p">;</span><span class="nx">src</span><span class="o">&amp;</span><span class="nx">rsquo</span><span class="p">;);</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>   <span class="c1">//Hide media library popup.</span>
+</span><span class='line'>   <span class="nx">tb_remove</span><span class="p">();</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="p">};</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>The callback will be invoked when the user has selected an image to insert. Here is a sample HTML snippet passed back to the callback function:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;http://www.kylethielk.com/blog/?attachment_id=971&quot;</span> <span class="na">rel=</span><span class="s">&quot;attachment wp-att-971&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">&quot;http://www.kylethielk.com/blog/wp-content/uploads/2013/02/big-image2.jpg&quot;</span> <span class="na">alt=</span><span class="s">&quot;&quot;</span> <span class="na">width=</span><span class="s">&quot;484&quot;</span> <span class="na">height=</span><span class="s">&quot;317&quot;</span> <span class="na">class=</span><span class="s">&quot;alignnone size-full wp-image-971&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;/a&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Good luck!</p>
+]]></content>
+  </entry>
+  
+</feed>
